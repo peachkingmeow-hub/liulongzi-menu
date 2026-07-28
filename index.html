@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>刘聋子牛肉粉馆</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{--primary:#c0392b;--primary-dark:#962d22;--bg:#f5f5f5;--white:#fff;--text:#222;--gray:#888;--light:#f0f0f0;--border:#e0e0e0}
+html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text)}
+a{text-decoration:none;color:inherit}
+
+/* Header */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 14px;height:50px}
+.hdr h1{font-size:17px;font-weight:700;letter-spacing:1px}
+.hdr-sub{font-size:12px;opacity:.8}
+
+/* Main layout */
+.main{display:flex;position:fixed;top:96px;bottom:60px;left:0;right:0;overflow:hidden}
+
+/* Search bar */
+.search-bar{padding:7px 12px;background:#fff;position:fixed;top:50px;left:0;right:0;z-index:99;border-bottom:1px solid #eee}
+.search-bar input{width:100%;padding:9px 14px 9px 36px;border:1.5px solid #e0e0e0;border-radius:20px;font-size:14px;outline:none;background:#f9f9f9 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cpath d='m21 21-4.3-4.3'%3E%3C/path%3E%3C/svg%3E") 12px center no-repeat;transition:border .2s}
+.search-bar input:focus{border-color:var(--primary);background-color:#fff}
+.search-clear{position:absolute;right:22px;top:50%;transform:translateY(-50%);width:20px;height:20px;border-radius:50%;background:#ccc;color:#fff;border:none;font-size:12px;cursor:pointer;display:none;align-items:center;justify-content:center;line-height:1}
+.search-clear.show{display:flex}
+
+/* Left category nav */
+.cat-nav{width:90px;background:#f8f8f8;border-right:1px solid var(--border);overflow-y:auto;flex-shrink:0;-webkit-overflow-scrolling:touch}
+.cat-nav::-webkit-scrollbar{display:none}
+.cat-item{padding:14px 8px;font-size:13px;color:#666;text-align:center;cursor:pointer;border-bottom:1px solid #ececec;line-height:1.4;position:relative;transition:background .15s}
+.cat-item.active{background:#fff;color:var(--primary);font-weight:700}
+.cat-item.active::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--primary)}
+
+/* Right product list */
+.prod-list{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding-bottom:70px}
+.prod-list::-webkit-scrollbar{display:none}
+.cat-section{padding:10px 0 0}
+.cat-title{font-size:12px;color:var(--gray);padding:8px 12px;background:#f5f5f5;position:sticky;top:0;z-index:10;border-bottom:1px solid #e8e8e8}
+.prod-item{display:flex;padding:12px;background:#fff;border-bottom:1px solid #f0f0f0;align-items:flex-start;gap:10px}
+.prod-img{width:76px;height:76px;border-radius:8px;object-fit:cover;flex-shrink:0;background:#f0f0f0}
+.prod-img.no-img{display:flex;align-items:center;justify-content:center;font-size:22px}
+.prod-info{flex:1;min-width:0}
+.prod-name{font-size:15px;font-weight:600;color:var(--text);line-height:1.3;margin-bottom:3px}
+.prod-desc{font-size:12px;color:var(--gray);margin-bottom:4px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.prod-tag{display:inline-block;font-size:10px;color:var(--primary);border:1px solid var(--primary);border-radius:2px;padding:0 4px;margin-right:4px;margin-bottom:4px}
+.prod-price{font-size:16px;font-weight:700;color:var(--primary)}
+.prod-price .unit{font-size:11px;font-weight:400}
+.prod-action{display:flex;align-items:flex-end;justify-content:flex-end;flex-direction:column;flex-shrink:0;gap:6px}
+.btn-add{width:28px;height:28px;background:var(--primary);border-radius:50%;border:none;color:#fff;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;transition:transform .1s}
+.btn-add:active{transform:scale(.9)}
+.qty-ctrl{display:flex;align-items:center;gap:6px}
+.btn-minus{width:24px;height:24px;border:1.5px solid var(--primary);border-radius:50%;background:#fff;color:var(--primary);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1}
+.qty-num{font-size:15px;font-weight:700;min-width:16px;text-align:center}
+.btn-plus{width:24px;height:24px;background:var(--primary);border-radius:50%;border:none;color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1}
+.spec-badge{font-size:10px;color:var(--gray);text-align:right}
+
+/* Cart panel (merged bar + detail) */
+.cart-panel{position:fixed;bottom:0;left:0;right:0;z-index:210;background:#fff;border-radius:16px 16px 0 0;box-shadow:0 -2px 20px rgba(0,0,0,.12);transition:max-height .3s cubic-bezier(.4,0,.2,1);max-height:56px;overflow:hidden;display:flex;flex-direction:column}
+.cart-panel.open{max-height:75vh}
+.cart-bar{display:flex;align-items:center;padding:10px 16px;min-height:56px;gap:8px;cursor:pointer;flex-shrink:0}
+.cart-bar-emoji{font-size:24px;line-height:1}
+.cart-bar-title{font-size:15px;font-weight:700;color:#222}
+.cart-bar-count{background:var(--primary);color:#fff;font-size:11px;min-width:18px;height:18px;border-radius:9px;display:none;align-items:center;justify-content:center;font-weight:700;padding:0 4px}
+.cart-bar-total{font-size:17px;font-weight:700;color:var(--primary);margin-left:auto}
+.cart-bar-btn{background:var(--primary);color:#fff;border:none;border-radius:22px;padding:10px 20px;font-size:14px;font-weight:700;cursor:pointer;white-space:nowrap;margin-left:6px}
+.cart-bar-btn:disabled{background:#aaa;cursor:not-allowed}
+.cart-items-area{flex:1;overflow-y:auto;display:flex;flex-direction:column}
+.cart-items-area::-webkit-scrollbar{display:none}
+.cart-items-hdr{display:flex;align-items:center;justify-content:space-between;padding:0 16px 10px;font-size:16px;font-weight:700;border-bottom:1px solid #f0f0f0;flex-shrink:0}
+.cart-items-clear{font-size:13px;color:var(--gray);cursor:pointer;font-weight:400}
+.cart-items-list{flex:1;overflow-y:auto;padding:0 16px}
+.cart-items-list::-webkit-scrollbar{display:none}
+.ci-item{display:flex;align-items:center;padding:10px 0;border-bottom:1px solid #f8f8f8;gap:10px}
+.ci-name{flex:1;font-size:14px}
+.ci-spec{font-size:12px;color:var(--gray)}
+.ci-price{font-size:14px;font-weight:600;color:var(--primary);margin-right:10px;white-space:nowrap}
+.ci-ctrl{display:flex;align-items:center;gap:6px}
+.ci-btn-m{width:22px;height:22px;border:1.5px solid var(--primary);border-radius:50%;background:#fff;color:var(--primary);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.ci-qty{font-size:14px;font-weight:700;min-width:18px;text-align:center}
+.ci-btn-p{width:22px;height:22px;background:var(--primary);border-radius:50%;border:none;color:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.empty-cart{text-align:center;padding:30px 20px;color:#aaa;font-size:15px}
+
+/* Overlay */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;display:none;opacity:0;transition:opacity .2s}
+.overlay.show{display:block;opacity:1}
+
+/* Spec sheet */
+.spec-sheet{position:fixed;bottom:0;left:0;right:0;background:#fff;border-radius:16px 16px 0 0;z-index:220;transform:translateY(100%);transition:transform .28s cubic-bezier(.4,0,.2,1);max-height:85vh;display:flex;flex-direction:column}
+.spec-sheet.show{transform:translateY(0)}
+.spec-hdr{display:flex;padding:14px;gap:12px;border-bottom:1px solid #f0f0f0;flex-shrink:0}
+.spec-hdr-img{width:72px;height:72px;border-radius:8px;object-fit:cover;background:#f0f0f0}
+.spec-hdr-info{flex:1}
+.spec-hdr-name{font-size:16px;font-weight:700;margin-bottom:4px}
+.spec-hdr-price{font-size:17px;font-weight:700;color:var(--primary)}
+.spec-body{flex:1;overflow-y:auto;padding:0 14px 12px}
+.spec-body::-webkit-scrollbar{display:none}
+.spec-group{margin-top:14px}
+.spec-group-title{font-size:13px;font-weight:600;color:#333;margin-bottom:8px}
+.spec-group-title .req{color:var(--primary);font-size:11px;font-weight:400;margin-left:4px}
+.spec-opts{display:flex;flex-wrap:wrap;gap:8px}
+.spec-opt{padding:6px 14px;border:1.5px solid #ddd;border-radius:20px;font-size:13px;cursor:pointer;transition:all .15s;background:#fff;color:#444}
+.spec-opt.active{border-color:var(--primary);background:#fff5f5;color:var(--primary);font-weight:600}
+.spec-foot{padding:14px;border-top:1px solid #f0f0f0;flex-shrink:0}
+.spec-qty-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.spec-qty-label{font-size:14px;color:#333}
+.spec-qty-ctrl{display:flex;align-items:center;gap:10px}
+.spec-qty-btn{width:30px;height:30px;border:1.5px solid var(--primary);border-radius:50%;background:#fff;color:var(--primary);font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.spec-qty-num{font-size:17px;font-weight:700;min-width:22px;text-align:center}
+.btn-confirm{width:100%;background:var(--primary);color:#fff;border:none;border-radius:24px;padding:13px;font-size:16px;font-weight:700;cursor:pointer}
+
+/* Cart detail merged into cart-panel above */
+
+/* Order page */
+#order-page{position:fixed;inset:0;background:#f5f5f5;z-index:300;display:none;flex-direction:column}
+#order-page.show{display:flex}
+.op-hdr{background:var(--primary);color:#fff;padding:14px 16px;display:flex;align-items:center;gap:10px;font-size:17px;font-weight:700;padding-top:calc(env(safe-area-inset-top)+14px)}
+.op-back{font-size:22px;cursor:pointer}
+.op-body{flex:1;overflow-y:auto;padding:16px}
+.op-body::-webkit-scrollbar{display:none}
+.op-card{background:#fff;border-radius:12px;padding:16px;margin-bottom:12px}
+.op-card-title{font-size:15px;font-weight:700;margin-bottom:12px;color:#333;border-bottom:1px solid #f0f0f0;padding-bottom:8px}
+.op-row{display:flex;align-items:center;padding:7px 0;border-bottom:1px solid #f8f8f8}
+.op-row:last-child{border-bottom:none}
+.op-item-name{flex:1;font-size:14px;color:#333}
+.op-item-spec{font-size:12px;color:#888}
+.op-item-qty{font-size:13px;color:#666;margin:0 10px}
+.op-item-price{font-size:14px;font-weight:600;color:var(--primary)}
+.price-row{display:flex;justify-content:space-between;padding:6px 0;font-size:14px;color:#555}
+.price-row.total{font-size:17px;font-weight:700;color:var(--text);padding-top:10px;border-top:1.5px solid #e0e0e0;margin-top:4px}
+.price-row.total span:last-child{color:var(--primary)}
+.op-foot{padding:16px;background:#fff;border-top:1px solid #eee;display:flex;gap:10px}
+.btn-reorder{flex:1;border:1.5px solid var(--primary);background:#fff;color:var(--primary);border-radius:24px;padding:13px;font-size:15px;font-weight:700;cursor:pointer}
+.btn-confirm-order{flex:2;background:var(--primary);color:#fff;border:none;border-radius:24px;padding:13px;font-size:15px;font-weight:700;cursor:pointer}
+.empty-cart{text-align:center;padding:40px 20px;color:#aaa;font-size:15px}
+
+.confirm-modal{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:400;display:none;align-items:center;justify-content:center}
+.confirm-modal.show{display:flex}
+.confirm-box{background:#fff;border-radius:16px;padding:28px 24px;margin:0 30px;text-align:center;max-width:320px;width:100%}
+.confirm-box h3{font-size:18px;font-weight:700;margin-bottom:12px}
+.confirm-box p{font-size:14px;color:#666;margin-bottom:24px;line-height:1.6}
+.confirm-box-btns{display:flex;gap:12px}
+.confirm-box-btns button{flex:1;padding:11px;border-radius:24px;font-size:15px;font-weight:700;cursor:pointer;border:none}
+.btn-cancel-order{background:#f0f0f0;color:#333}
+.btn-ok-order{background:var(--primary);color:#fff}
+</style>
+</head>
+<body>
+
+
+<!-- Header -->
+<div class="hdr">
+  <h1>🍜 刘聋子牛肉粉馆</h1>
+  <div class="hdr-sub">正宗湖南风味</div>
+</div>
+
+<!-- Search bar -->
+<div class="search-bar">
+  <input type="text" id="searchInput" placeholder="🔍 搜索菜品..." autocomplete="off">
+  <button class="search-clear" id="searchClear" onclick="clearSearch()">✕</button>
+</div>
+
+<!-- Main -->
+<div class="main">
+  <div class="cat-nav" id="catNav"></div>
+  <div class="prod-list" id="prodList"></div>
+</div>
+
+<!-- Cart panel (merged bar + detail) -->
+<div class="cart-panel" id="cartPanel">
+  <div class="cart-bar" id="cartBar">
+    <span class="cart-bar-emoji">🛒</span>
+    <span class="cart-bar-title">已选商品</span>
+    <span class="cart-bar-count" id="cartBarCount">0</span>
+    <span class="cart-bar-total" id="cartBarTotal">¥0.00</span>
+    <button class="cart-bar-btn" id="cartBarBtn" disabled>去结算</button>
+  </div>
+  <div class="cart-items-area" id="cartItemsArea">
+    <div class="cart-items-hdr">
+      <span class="cart-items-clear" id="cartItemsClear">🗑 清空</span>
+    </div>
+    <div class="cart-items-list" id="cartItemsList"></div>
+  </div>
+</div>
+
+<!-- Overlay -->
+<div class="overlay" id="overlay"></div>
+
+<!-- Spec sheet -->
+<div class="spec-sheet" id="specSheet">
+  <div class="spec-hdr">
+    <img class="spec-hdr-img" id="sImg" src="" alt="">
+    <div class="spec-hdr-info">
+      <div class="spec-hdr-name" id="sName"></div>
+      <div class="spec-hdr-price" id="sPrice"></div>
+    </div>
+  </div>
+  <div class="spec-body" id="sBody"></div>
+  <div class="spec-foot">
+    <div class="spec-qty-row">
+      <div class="spec-qty-label">数量</div>
+      <div class="spec-qty-ctrl">
+        <button class="spec-qty-btn" id="sQtyM">－</button>
+        <div class="spec-qty-num" id="sQtyNum">1</div>
+        <button class="spec-qty-btn" id="sQtyP">＋</button>
+      </div>
+    </div>
+    <button class="btn-confirm" id="sConfirm">加入购物车</button>
+  </div>
+</div>
+
+<!-- Order page -->
+<div id="order-page">
+  <div class="op-hdr">
+    <span class="op-back" id="opBack">←</span>
+    <span>订单明细</span>
+  </div>
+  <div class="op-body" id="opBody"></div>
+  <div class="op-foot">
+    <button class="btn-reorder" id="btnReorder">继续点餐</button>
+    <button class="btn-confirm-order" id="btnConfirmOrder">确认下单</button>
+  </div>
+</div>
+
+<!-- Confirm modal -->
+<div class="confirm-modal" id="confirmModal">
+  <div class="confirm-box">
+    <h3>🎉 下单成功！</h3>
+    <p>您的订单已提交，请稍候服务员为您安排。<br>祝您用餐愉快！</p>
+    <div class="confirm-box-btns">
+      <button class="btn-cancel-order" id="btnBackMenu">继续点餐</button>
+      <button class="btn-ok-order" id="btnOrderOK">好的</button>
+    </div>
+  </div>
+</div>
+
+<!-- 菜单数据：如需更新菜单，请编辑 menu-data.js 或运行 convert-excel.py -->
+<script src="menu-data.js"></script>
+<script>
+
+// ============ PACKING OPTION PRICE MAP ============
+const PACKING_PRICE = {
+  '【外带】牛皮纸碗': 0.5,
+  '【外带】品牌餐盒': 1.0,
+  '【外带】品牌餐盒（小）': 0.5,
+  '【外带】干湿分离打包盒': 2.0,
+  '【外带】炖锅打包盒': 2.0,
+  '【外带】1768打包盒': 1.0,
+  '【外带】牛皮纸碗分离': 0.5,
+  '【外带】码子方盒': 0.5,
+  '【外带】码子粉干湿分离': 2.5,
+  '打包带走': 1.0,
+  '外卖手提袋': 1.5,
+  '码子粉-品牌干湿分离打包盒': 2.5
+};
+// ============ 加码/加料价格 ============
+const ADDON_PRICE = {
+  '加码-红烧牛肉': 22.00,
+  '加码-秘制牛肉': 22.00,
+  '加码-牛三鲜': 22.00,
+  '加码-麻辣牛肉': 22.00,
+  '加码-鲜切大片原味牛肉': 22.00,
+  '加-卤蛋/枚': 3.00,
+  '加-海带结2个': 3.00,
+  '加-卤鸡爪/只': 6.00,
+  '加-卤鸭掌/只': 6.00,
+  '额外加一个鸡蛋炒': 3.00,
+};
+function getOptPrice(optName, catId) {
+  // Check addon (粉面加码 / 加码小吃) prices first, then packing box prices
+  if (ADDON_PRICE[optName]) return ADDON_PRICE[optName];
+  // Fallback for unknown addons
+  if (optName.startsWith('加码-')) return 22.00;
+  if (optName.startsWith('加-')) return 3.00;
+  // Packing box prices — free for certain categories (e.g. 烧烤)
+  if (PACKING_PRICE[optName] !== undefined && catId && CAT_FREE_PACKING.has(catId)) return 0;
+  return PACKING_PRICE[optName] || 0;
+}
+
+// ============ CATEGORY → DEFAULT PACKING ============
+// Key = category ID, Value = preferred default packaging option name
+// 牛肉粉面→干湿分离盒¥2 | 鲜鱼汤→码子干湿分离¥2.5 | 虾蟹面+炒菜+新品+鲜汤+盖码饭+炒粉面豆丝→品牌餐盒¥1 | 卤菜凉菜→码子方盒¥0.5 | 烧烤→打包带走免费
+const CAT_DEFAULT_PACKING = {
+  'cat1': '【外带】干湿分离打包盒',
+  'cat2': '【外带】码子粉干湿分离',
+  'cat5': '【外带】品牌餐盒',
+  'cat6': '【外带】品牌餐盒',
+  'cat7': '【外带】品牌餐盒',
+  'cat10': '【外带】码子方盒',
+  'cat11': '【外带】品牌餐盒',
+  'cat12': '【外带】品牌餐盒',
+  'cat13': '【外带】品牌餐盒',
+  'cat8': '打包带走',
+};
+
+// Categories with FREE packing (no charge)
+const CAT_FREE_PACKING = new Set(['cat8']);
+
+// Fuzzy match: find the best packaging option in a group for a given preferred name
+function findBestPackOpt(preferred, opts) {
+  // Exact match first
+  if (opts.includes(preferred)) return preferred;
+  // Fallback: match by keyword
+  const keywords = [
+    { kw: '干湿分离', fallback: opts.find(o => o.includes('干湿分离')) },
+    { kw: '品牌餐盒', fallback: opts.find(o => o.includes('品牌餐盒')) },
+    { kw: '码子方盒', fallback: opts.find(o => o.includes('码子方盒')) },
+  ];
+  for (const { kw, fallback } of keywords) {
+    if (preferred.includes(kw) && fallback) return fallback;
+  }
+  return null;
+}
+
+// ============ STATE ============
+let cart = [];
+let specTarget = null; // current item being spec-selected
+let specSelections = {}; // {groupName: selectedOpt}
+let specQty = 1;
+let specSpecIdx = -1; // selected spec index
+let specOptsPrice = 0; // accumulated addon prices from packing options
+let specGroupsReq = {}; // {groupName: boolean} 记录每个选项组是否必选
+let cartDetailOpen = false;
+let _scrollLock = false;
+
+// ============ RENDER CATEGORIES ============
+function renderCats() {
+  const nav = document.getElementById('catNav');
+  nav.innerHTML = MENU.map((c,i)=>
+    `<div class="cat-item${i===0?' active':''}" data-cat="${c.id}" onclick="scrollToCat('${c.id}',this)">${c.name}</div>`
+  ).join('');
+}
+
+function renderProducts() {
+  const list = document.getElementById('prodList');
+  list.innerHTML = MENU.map(cat=>`
+    <div class="cat-section" id="sec_${cat.id}">
+      <div class="cat-title">${cat.name}</div>
+      ${cat.items.map(item=>renderItem(item)).join('')}
+    </div>
+  `).join('');
+}
+
+function getBasePrice(item) {
+  if(item.specs && item.specs.length) return item.specs[0].price;
+  return item.price;
+}
+
+function renderItem(item) {
+  const basePrice = getBasePrice(item);
+  // 有非打包选项组(如主食/做法/辣度等) → 走规格页
+  // 牛肉粉面(cat1)+鲜鱼汤(cat2)有打包选项 → 也走规格页
+  // 其他分类只有打包选项 → 直接加购物车
+  const catId = MENU.find(c => c.items.some(i => i.id === item.id))?.id;
+  const hasNonPackingOpts = (item.opts||[]).some(g => !g.g.includes('默认堂食不用选') && !g.g.includes('餐盒'));
+  const needsPacking = (catId === 'cat1' || catId === 'cat2');
+  const hasSpec = hasNonPackingOpts || (needsPacking && ((item.specs && item.specs.length>0) || (item.opts && item.opts.length>0)));
+  const cartQty = getCartQty(item.id);
+  const imgEl = item.img
+    ? `<img class="prod-img" src="${item.img}" alt="${item.name}" loading="lazy" onerror="this.style.display='none'">`
+    : `<div class="prod-img no-img">🍜</div>`;
+  const tags = (item.tags||[]).map(t=>`<span class="prod-tag">${t}</span>`).join('');
+  const specLabel = item.specs ? `<div class="spec-badge">多规格</div>` : '';
+  const priceStr = item.specs
+    ? `<span class="unit">¥</span>${item.specs[0].price}<span class="unit"> 起</span>`
+    : `<span class="unit">¥</span>${item.price}`;
+
+  let actionEl;
+  if(cartQty===0) {
+    actionEl = `
+      ${specLabel}
+      <button class="btn-add" onclick="${hasSpec?`openSpec('${item.id}')`:`addDirect('${item.id}')`}">＋</button>
+    `;
+  } else {
+    actionEl = `
+      <div class="qty-ctrl">
+        <button class="btn-minus" onclick="decCart('${item.id}')">－</button>
+        <div class="qty-num">${cartQty}</div>
+        <button class="btn-plus" onclick="${hasSpec?`openSpec('${item.id}')`:`incCart('${item.id}')`}">＋</button>
+      </div>
+    `;
+  }
+
+  return `
+    <div class="prod-item" id="pi_${item.id}">
+      ${imgEl}
+      <div class="prod-info">
+        <div class="prod-name">${item.name}</div>
+        ${item.desc?`<div class="prod-desc">${item.desc}</div>`:''}
+        ${tags}
+        <div class="prod-price">${priceStr}</div>
+      </div>
+      <div class="prod-action">${actionEl}</div>
+    </div>
+  `;
+}
+
+function getCartQty(itemId) {
+  return cart.filter(c=>c.id===itemId).reduce((s,c)=>s+c.qty,0);
+}
+
+function refreshItem(itemId) {
+  const item = findItem(itemId);
+  if(!item) return;
+  const el = document.getElementById('pi_'+itemId);
+  if(el) el.outerHTML = renderItem(item);
+}
+
+function findItem(id) {
+  for(const cat of MENU) {
+    const found = cat.items.find(i=>i.id===id);
+    if(found) return found;
+  }
+  return null;
+}
+
+// ============ CART OPERATIONS ============
+function addDirect(itemId) {
+  const item = findItem(itemId);
+  if(!item) return;
+  // Non-cat1/cat2 items auto-include default packing
+  const catId = MENU.find(c => c.items.some(i => i.id === itemId))?.id;
+  const defPacking = (catId && catId !== 'cat1' && catId !== 'cat2') ? (CAT_DEFAULT_PACKING[catId] || '') : '';
+  const packingPrice = (defPacking && !CAT_FREE_PACKING.has(catId)) ? (PACKING_PRICE[defPacking] || 0) : 0;
+  const totalPrice = item.price + packingPrice;
+  const existing = cart.find(c=>c.id===itemId && c.specName==='' && c.optLabel===defPacking);
+  if(existing) existing.qty++;
+  else cart.push({_key:Date.now()+'_'+Math.random(),id:itemId,name:item.name,specName:'',optLabel:defPacking,price:totalPrice,qty:1,img:item.img||''});
+  updateCart();
+  refreshItem(itemId);
+}
+
+function incCart(itemId) {
+  const items = cart.filter(c=>c.id===itemId);
+  if(items.length===1) { items[0].qty++; updateCart(); refreshItem(itemId); }
+  else if(items.length>1) {
+    // Multiple entries: if item has non-packing opts or is cat1/cat2, open spec
+    const item = findItem(itemId);
+    const itemCatId = item ? (MENU.find(c => c.items.some(i => i.id === itemId))?.id) : '';
+    const hasNonPacking = item && (item.opts||[]).some(g => !g.g.includes('默认堂食不用选') && !g.g.includes('餐盒'));
+    if(itemCatId==='cat1'||itemCatId==='cat2'||hasNonPacking) openSpec(itemId);
+    else { items[0].qty++; updateCart(); refreshItem(itemId); }
+  }
+}
+
+function decCart(itemId) {
+  const items = cart.filter(c=>c.id===itemId);
+  if(items.length===1) {
+    items[0].qty--;
+    if(items[0].qty<=0) cart = cart.filter(c=>c._key!==items[0]._key);
+    updateCart(); refreshItem(itemId);
+  } else {
+    // remove last added
+    const last = [...cart].reverse().find(c=>c.id===itemId);
+    if(last) { last.qty--; if(last.qty<=0) cart=cart.filter(c=>c._key!==last._key); }
+    updateCart(); refreshItem(itemId);
+  }
+}
+
+function updateCart() {
+  const total = cart.reduce((s,c)=>s+c.price*c.qty,0);
+  const count = cart.reduce((s,c)=>s+c.qty,0);
+  document.getElementById('cartBarTotal').textContent = '¥'+total.toFixed(2);
+  const badge = document.getElementById('cartBarCount');
+  if(count>0){badge.style.display='flex';badge.textContent=count;}
+  else badge.style.display='none';
+  const btn = document.getElementById('cartBarBtn');
+  btn.disabled = count===0;
+  if(cartDetailOpen) renderCartDetail();
+}
+
+// ============ SPEC SHEET ============
+function openSpec(itemId) {
+  const item = findItem(itemId);
+  if(!item) return;
+  specTarget = item;
+  specSelections = {};
+  specOptsPrice = 0;
+  specGroupsReq = {};
+  specQty = 1;
+  specSpecIdx = item.specs ? 0 : -1;
+
+  document.getElementById('sName').textContent = item.name;
+  updateSpecPrice();
+  const imgEl = document.getElementById('sImg');
+  if(item.img){imgEl.src=item.img;imgEl.style.display='block';}
+  else{imgEl.style.display='none';}
+
+  let html = '';
+  // specs
+  if(item.specs && item.specs.length){
+    html += `<div class="spec-group"><div class="spec-group-title">规格 <span class="req">必选</span></div><div class="spec-opts">`;
+    item.specs.forEach((s,i)=>{
+      html+=`<div class="spec-opt${i===0?' active':''}" onclick="selectSpec(${i})">${s.name}<br><small>¥${s.price}</small></div>`;
+    });
+    html += `</div></div>`;
+  }
+  // Determine category for default packaging
+  const catId = MENU.find(c => c.items.some(i => i.id === item.id))?.id;
+  const defaultPacking = CAT_DEFAULT_PACKING[catId] || null;
+  let hasPackingGroup = false;
+
+  // opts
+  (item.opts||[]).forEach(g=>{
+    const isPackingGroup = g.g.includes('默认堂食不用选');
+    if (isPackingGroup) hasPackingGroup = true;
+    // For packing group with a default: only show the matched option, mark as required
+    const isReq = (isPackingGroup && defaultPacking) ? true : g.req;
+    specGroupsReq[g.g] = isReq;
+    html+=`<div class="spec-group"><div class="spec-group-title">${isPackingGroup&&defaultPacking?'默认餐盒':g.g}${isReq?' <span class="req">必选</span>':''}</div><div class="spec-opts">`;
+    // When category has a default packing: only render the matched option, hide others
+    let renderOpts = g.opts;
+    if (isPackingGroup && defaultPacking) {
+      const bestOpt = findBestPackOpt(defaultPacking, g.opts);
+      if (bestOpt) renderOpts = [bestOpt];
+    }
+    renderOpts.forEach((o,i)=>{
+      let active = false;
+      if (isPackingGroup && defaultPacking) {
+        active = true;
+      } else if (g.req && i === 0) {
+        active = true;
+      }
+      if(active) specSelections[g.g]=o;
+      const optPrice = getOptPrice(o, catId);
+      const priceTag = optPrice > 0 ? `<small style="color:#e8500d"> +¥${optPrice}</small>` : '';
+      html+=`<div class="spec-opt${active?' active':''}" onclick="selectOpt('${g.g}','${o}',this)" data-opt-price="${optPrice}">${o}${priceTag}</div>`;
+    });
+    html+=`</div></div>`;
+  });
+
+  // If category needs default packaging but no group exists, inject a virtual group
+  if (defaultPacking && !hasPackingGroup) {
+    const gName = '餐盒打包（默认必选）';
+    specGroupsReq[gName] = true;
+    specSelections[gName] = defaultPacking;
+    const optPrice = getOptPrice(defaultPacking, catId);
+    const priceTag = optPrice > 0 ? `<small style="color:#e8500d"> +¥${optPrice}</small>` : '';
+    html += `<div class="spec-group"><div class="spec-group-title">${gName} <span class="req">必选</span></div><div class="spec-opts"><div class="spec-opt active" onclick="selectOpt('${gName}','${defaultPacking}',this)" data-opt-price="${optPrice}">${defaultPacking}${priceTag}</div></div></div>`;
+  }
+
+  document.getElementById('sBody').innerHTML = html;
+  document.getElementById('sQtyNum').textContent = specQty;
+  // Recalculate opt prices after auto-selecting required options
+  specOptsPrice = 0;
+  Object.entries(specSelections).forEach(([k,v])=>{ specOptsPrice += getOptPrice(v, catId); });
+  updateSpecPrice();
+  document.getElementById('sConfirm').textContent = specOptsPrice>0 ? '加入购物车 ¥'+(specTarget.specs&&specSpecIdx>=0?specTarget.specs[specSpecIdx].price:specTarget.price+specOptsPrice).toFixed(2) : '加入购物车';
+
+  if(cartDetailOpen) {
+    cartDetailOpen = false;
+    document.getElementById('cartPanel').classList.remove('open');
+  }
+  showOverlay();
+  document.getElementById('specSheet').classList.add('show');
+}
+
+function selectSpec(idx) {
+  specSpecIdx = idx;
+  updateSpecPrice();
+  document.querySelectorAll('#sBody .spec-group:first-child .spec-opt').forEach((el,i)=>{
+    el.classList.toggle('active',i===idx);
+  });
+  const totalPrice = specTarget.specs[idx].price + specOptsPrice;
+  document.getElementById('sConfirm').textContent = specOptsPrice>0 ? '加入购物车 ¥'+totalPrice.toFixed(2) : '加入购物车';
+}
+
+function selectOpt(group, val, el) {
+  const isActive = el.classList.contains('active');
+  const isRequired = specGroupsReq[group];
+  const _catId = specTarget ? (MENU.find(c => c.items.some(i => i.id === specTarget.id))?.id) : '';
+
+  // If already selected and NOT required, deselect it
+  if (isActive && !isRequired) {
+    specSelections[group] = null;
+    el.classList.remove('active');
+    // Recalculate price
+    specOptsPrice = 0;
+    Object.entries(specSelections).forEach(([k,v])=>{
+      if(v) specOptsPrice += getOptPrice(v, _catId);
+    });
+    updateSpecPrice();
+    const basePrice = specTarget.specs&&specSpecIdx>=0?specTarget.specs[specSpecIdx].price:specTarget.price;
+    document.getElementById('sConfirm').textContent = specOptsPrice>0 ? '加入购物车 ¥'+(basePrice+specOptsPrice).toFixed(2) : '加入购物车';
+    return;
+  }
+
+  // Normal select logic
+  specSelections[group] = val;
+  const parent = el.closest('.spec-opts');
+  parent.querySelectorAll('.spec-opt').forEach(e=>e.classList.remove('active'));
+  el.classList.add('active');
+  // Recalculate packing option price
+  specOptsPrice = 0;
+  Object.entries(specSelections).forEach(([k,v])=>{
+    if(v) specOptsPrice += getOptPrice(v, _catId);
+  });
+  updateSpecPrice();
+  const basePrice = specTarget.specs&&specSpecIdx>=0?specTarget.specs[specSpecIdx].price:specTarget.price;
+  document.getElementById('sConfirm').textContent = specOptsPrice>0 ? '加入购物车 ¥'+(basePrice+specOptsPrice).toFixed(2) : '加入购物车';
+}
+
+function updateSpecPrice() {
+  if(!specTarget) return;
+  let price = specTarget.price;
+  if(specTarget.specs && specSpecIdx>=0) price = specTarget.specs[specSpecIdx].price;
+  price += specOptsPrice;
+  document.getElementById('sPrice').textContent = '¥'+price;
+}
+
+document.getElementById('sQtyM').onclick = ()=>{
+  if(specQty>1){specQty--;document.getElementById('sQtyNum').textContent=specQty;}
+};
+document.getElementById('sQtyP').onclick = ()=>{
+  specQty++;document.getElementById('sQtyNum').textContent=specQty;
+};
+
+document.getElementById('sConfirm').onclick = ()=>{
+  if(!specTarget) return;
+  const _catId = MENU.find(c => c.items.some(i => i.id === specTarget.id))?.id;
+  // validate required
+  const reqGroups = (specTarget.opts||[]).filter(g=>g.req);
+  for(const g of reqGroups){
+    if(!specSelections[g.g]){
+      // auto-select first
+      specSelections[g.g]=g.opts[0];
+    }
+  }
+  let price = specTarget.price;
+  let specName = '';
+  if(specTarget.specs && specSpecIdx>=0){
+    price = specTarget.specs[specSpecIdx].price;
+    specName = specTarget.specs[specSpecIdx].name;
+  }
+  // Add packing option prices
+  Object.entries(specSelections).forEach(([k,v])=>{
+    if(v) price += getOptPrice(v, _catId);
+  });
+  const optParts = Object.entries(specSelections).filter(([k,v])=>v!==null).map(([k,v])=>`${k}:${v}`);
+  const optLabel = optParts.join('，');
+  const key = specTarget.id+'|'+specName+'|'+optLabel;
+  const existing = cart.find(c=>c._key===key);
+  if(existing) existing.qty+=specQty;
+  else cart.push({_key:key,id:specTarget.id,name:specTarget.name,specName,optLabel,price,qty:specQty,img:specTarget.img||''});
+  updateCart();
+  refreshItem(specTarget.id);
+  closeSpec();
+};
+
+function closeSpec() {
+  document.getElementById('specSheet').classList.remove('show');
+  hideOverlay();
+}
+
+// ============ CART PANEL (merged bar + detail) ============
+document.getElementById('cartBar').onclick = (e)=>{
+  // Don't toggle if clicking the checkout button
+  if(e.target.id==='cartBarBtn') return;
+  toggleCartDetail();
+};
+
+function toggleCartDetail() {
+  cartDetailOpen = !cartDetailOpen;
+  const panel = document.getElementById('cartPanel');
+  if(cartDetailOpen){
+    renderCartDetail();
+    panel.classList.add('open');
+  } else {
+    panel.classList.remove('open');
+  }
+}
+
+function renderCartDetail() {
+  const el = document.getElementById('cartItemsList');
+  if(cart.length===0){
+    el.innerHTML='<div class="empty-cart">购物车是空的</div>';
+    return;
+  }
+  el.innerHTML = cart.map(c=>`
+    <div class="ci-item">
+      <div>
+        <div class="ci-name">${c.name}${c.specName?' ('+c.specName+')':''}</div>
+        ${c.optLabel?`<div class="ci-spec">${c.optLabel}</div>`:''}
+      </div>
+      <div class="ci-price">¥${(c.price*c.qty).toFixed(2)}</div>
+      <div class="ci-ctrl">
+        <button class="ci-btn-m" onclick="ciDec('${c._key}')">－</button>
+        <div class="ci-qty">${c.qty}</div>
+        <button class="ci-btn-p" onclick="ciInc('${c._key}')">＋</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function ciInc(key) {
+  const item = cart.find(c=>c._key===key);
+  if(item){item.qty++;updateCart();refreshItem(item.id);}
+}
+function ciDec(key) {
+  const item = cart.find(c=>c._key===key);
+  if(item){
+    item.qty--;
+    if(item.qty<=0){const id=item.id;cart=cart.filter(c=>c._key!==key);updateCart();refreshItem(id);}
+    else{updateCart();refreshItem(item.id);}
+  }
+}
+
+document.getElementById('cartItemsClear').onclick = ()=>{
+  cart=[];
+  updateCart();
+  MENU.forEach(cat=>cat.items.forEach(item=>refreshItem(item.id)));
+  toggleCartDetail();
+};
+
+// ============ CHECKOUT / ORDER PAGE ============
+document.getElementById('cartBarBtn').onclick = ()=>{
+  if(cart.length===0) return;
+  if(cartDetailOpen) toggleCartDetail();
+  showOrderPage();
+};
+
+function showOrderPage() {
+  const page = document.getElementById('order-page');
+  const body = document.getElementById('opBody');
+  const total = cart.reduce((s,c)=>s+c.price*c.qty,0);
+  const count = cart.reduce((s,c)=>s+c.qty,0);
+
+  let itemsHtml = cart.map(c=>`
+    <div class="op-row">
+      <div>
+        <div class="op-item-name">${c.name}${c.specName?' ('+c.specName+')':''}</div>
+        ${c.optLabel?`<div class="op-item-spec">${c.optLabel}</div>`:''}
+      </div>
+      <div class="op-item-qty">×${c.qty}</div>
+      <div class="op-item-price">¥${(c.price*c.qty).toFixed(2)}</div>
+    </div>
+  `).join('');
+
+  body.innerHTML = `
+    <div class="op-card">
+      <div class="op-card-title">🍜 点菜记录（共${count}件）</div>
+      ${itemsHtml}
+    </div>
+    <div class="op-card">
+      <div class="op-card-title">💰 价格明细</div>
+      <div class="price-row"><span>菜品合计</span><span>¥${total.toFixed(2)}</span></div>
+      <div class="price-row"><span>服务费</span><span>¥0.00</span></div>
+      <div class="price-row"><span>配送费</span><span>¥0.00</span></div>
+      <div class="price-row total"><span>实付总计</span><span>¥${total.toFixed(2)}</span></div>
+    </div>
+    <div class="op-card" style="font-size:12px;color:#aaa;text-align:center;padding:12px">
+      提示：请向服务员展示此订单，或前往收银台结算
+    </div>
+  `;
+  page.classList.add('show');
+}
+
+document.getElementById('opBack').onclick = ()=>{
+  document.getElementById('order-page').classList.remove('show');
+};
+document.getElementById('btnReorder').onclick = ()=>{
+  document.getElementById('order-page').classList.remove('show');
+};
+document.getElementById('btnConfirmOrder').onclick = ()=>{
+  document.getElementById('confirmModal').classList.add('show');
+};
+document.getElementById('btnBackMenu').onclick = ()=>{
+  document.getElementById('confirmModal').classList.remove('show');
+  document.getElementById('order-page').classList.remove('show');
+};
+document.getElementById('btnOrderOK').onclick = ()=>{
+  // clear cart after confirm
+  cart=[];
+  updateCart();
+  MENU.forEach(cat=>cat.items.forEach(item=>refreshItem(item.id)));
+  document.getElementById('confirmModal').classList.remove('show');
+  document.getElementById('order-page').classList.remove('show');
+};
+
+// ============ OVERLAY ============
+function showOverlay() {
+  const ov = document.getElementById('overlay');
+  ov.style.display='block';
+  requestAnimationFrame(()=>ov.style.opacity='1');
+}
+function hideOverlay() {
+  const ov = document.getElementById('overlay');
+  ov.style.opacity='0';
+  setTimeout(()=>ov.style.display='none',200);
+}
+
+document.getElementById('overlay').onclick = ()=>{
+  if(document.getElementById('specSheet').classList.contains('show')) closeSpec();
+};
+
+// ============ SCROLL & ACTIVE CAT ============
+function scrollToCat(catId, el) {
+  _scrollLock = true;
+  setActiveCat(catId);
+  const sec = document.getElementById('sec_'+catId);
+  if(sec) sec.scrollIntoView({behavior:'smooth',block:'start'});
+  setTimeout(()=>_scrollLock=false,600);
+}
+
+function setActiveCat(catId) {
+  document.querySelectorAll('.cat-item').forEach(el=>{
+    el.classList.toggle('active',el.dataset.cat===catId);
+  });
+  // scroll cat into view
+  const active = document.querySelector(`.cat-item[data-cat="${catId}"]`);
+  if(active) active.scrollIntoView({block:'nearest'});
+}
+
+// Intersection observer for auto-highlight
+const io = new IntersectionObserver((entries)=>{
+  if(_scrollLock) return;
+  entries.forEach(e=>{
+    if(e.isIntersecting && e.intersectionRatio>0.3){
+      const id = e.target.id.replace('sec_','');
+      setActiveCat(id);
+    }
+  });
+},{threshold:0.3, rootMargin:'-50px 0px -60% 0px'});
+
+function initObserver() {
+  MENU.forEach(cat=>{
+    const sec = document.getElementById('sec_'+cat.id);
+    if(sec) io.observe(sec);
+  });
+}
+
+// ============ SEARCH ============
+const searchInput = document.getElementById('searchInput');
+const searchClear = document.getElementById('searchClear');
+const catNavEl = document.getElementById('catNav');
+const prodListEl = document.getElementById('prodList');
+
+let searchDebounce = null;
+searchInput.addEventListener('input', function() {
+  clearTimeout(searchDebounce);
+  searchDebounce = setTimeout(doSearch, 200);
+});
+
+function doSearch() {
+  const q = searchInput.value.trim();
+  if (q) {
+    searchClear.classList.add('show');
+    performSearch(q);
+  } else {
+    searchClear.classList.remove('show');
+    restoreNormal();
+  }
+}
+
+function clearSearch() {
+  searchInput.value = '';
+  searchClear.classList.remove('show');
+  restoreNormal();
+}
+
+function performSearch(q) {
+  const kw = q.toLowerCase();
+  const results = [];
+  MENU.forEach(cat => {
+    cat.items.forEach(item => {
+      if (item.name.toLowerCase().includes(kw)) {
+        results.push({ item, catId: cat.id, catName: cat.name });
+      }
+    });
+  });
+
+  // Hide category nav during search
+  catNavEl.style.display = 'none';
+
+  if (results.length === 0) {
+    prodListEl.innerHTML = '<div class="empty-cart" style="padding:60px 20px">😕 没有找到相关菜品</div>';
+  } else {
+    prodListEl.innerHTML = results.map(({ item }) => renderItem(item)).join('');
+  }
+}
+
+function restoreNormal() {
+  catNavEl.style.display = '';
+  renderProducts();
+  initObserver();
+}
+
+// Override refreshItem during search to re-render
+const _origRefreshItem = refreshItem;
+refreshItem = function(itemId) {
+  if (searchInput.value.trim()) {
+    doSearch(); // re-render entire search result
+    updateCart();
+  } else {
+    _origRefreshItem(itemId);
+  }
+};
+
+// ============ INIT ============
+renderCats();
+renderProducts();
+updateCart();
+initObserver();
+</script>
+</body>
+</html>
