@@ -279,22 +279,23 @@ function getOptPrice(optName, catId) {
 
 // ============ CATEGORY → DEFAULT PACKING ============
 // Key = category ID, Value = preferred default packaging option name
-// 牛肉粉面→干湿分离盒¥2 | 鲜鱼汤→码子干湿分离¥2.5 | 虾蟹面+炒菜+新品+鲜汤+盖码饭+炒粉面豆丝→品牌餐盒¥1 | 卤菜凉菜→码子方盒¥0.5 | 烧烤→打包带走免费
+// 牛肉粉面(cat1/cat2)→干湿分离盒¥2 | 鲜鱼汤(cat3)→码子干湿分离¥2.5 | 虾蟹面(cat7)+炒菜(cat8)+新品(cat9)+鲜汤(cat13)+盖码饭(cat14)+炒粉面(cat15)→品牌餐盒¥1 | 卤菜凉菜(cat12)→码子方盒¥0.5 | 烧烤(cat10)→打包带走免费
 const CAT_DEFAULT_PACKING = {
   'cat1': '【外带】干湿分离打包盒',
-  'cat2': '【外带】码子粉干湿分离',
-  'cat5': '【外带】品牌餐盒',
-  'cat6': '【外带】品牌餐盒',
+  'cat2': '【外带】干湿分离打包盒',
+  'cat3': '【外带】码子粉干湿分离',
   'cat7': '【外带】品牌餐盒',
-  'cat10': '【外带】码子方盒',
-  'cat11': '【外带】品牌餐盒',
-  'cat12': '【外带】品牌餐盒',
+  'cat8': '【外带】品牌餐盒',
+  'cat9': '【外带】品牌餐盒',
   'cat13': '【外带】品牌餐盒',
-  'cat8': '打包带走',
+  'cat14': '【外带】品牌餐盒',
+  'cat15': '【外带】品牌餐盒',
+  'cat12': '【外带】码子方盒',
+  'cat10': '打包带走',
 };
 
 // Categories with FREE packing (no charge)
-const CAT_FREE_PACKING = new Set(['cat8']);
+const CAT_FREE_PACKING = new Set(['cat10']);
 
 // Fuzzy match: find the best packaging option in a group for a given preferred name
 function findBestPackOpt(preferred, opts) {
@@ -349,11 +350,11 @@ function getBasePrice(item) {
 function renderItem(item) {
   const basePrice = getBasePrice(item);
   // 有非打包选项组(如主食/做法/辣度等) → 走规格页
-  // 牛肉粉面(cat1)+鲜鱼汤(cat2)有打包选项 → 也走规格页
+  // 牛肉粉面(cat1/cat2)+鲜鱼汤(cat3)有打包选项 → 也走规格页
   // 其他分类只有打包选项 → 直接加购物车
   const catId = MENU.find(c => c.items.some(i => i.id === item.id))?.id;
   const hasNonPackingOpts = (item.opts||[]).some(g => !g.g.includes('默认堂食不用选') && !g.g.includes('餐盒'));
-  const needsPacking = (catId === 'cat1' || catId === 'cat2');
+  const needsPacking = (catId === 'cat1' || catId === 'cat2' || catId === 'cat3');
   const hasSpec = hasNonPackingOpts || (needsPacking && ((item.specs && item.specs.length>0) || (item.opts && item.opts.length>0)));
   const cartQty = getCartQty(item.id);
   const imgEl = item.img
@@ -418,9 +419,9 @@ function findItem(id) {
 function addDirect(itemId) {
   const item = findItem(itemId);
   if(!item) return;
-  // Non-cat1/cat2 items auto-include default packing
+  // Non-cat1/cat2/cat3 items auto-include default packing
   const catId = MENU.find(c => c.items.some(i => i.id === itemId))?.id;
-  const defPacking = (catId && catId !== 'cat1' && catId !== 'cat2') ? (CAT_DEFAULT_PACKING[catId] || '') : '';
+  const defPacking = (catId && catId !== 'cat1' && catId !== 'cat2' && catId !== 'cat3') ? (CAT_DEFAULT_PACKING[catId] || '') : '';
   const packingPrice = (defPacking && !CAT_FREE_PACKING.has(catId)) ? (PACKING_PRICE[defPacking] || 0) : 0;
   const totalPrice = item.price + packingPrice;
   const existing = cart.find(c=>c.id===itemId && c.specName==='' && c.optLabel===defPacking);
