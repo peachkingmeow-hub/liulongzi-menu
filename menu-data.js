@@ -112,10 +112,8 @@ const MENU = [
         "id": "p102",
         "name": "红烧牛肉粉",
         "price": 25.0,
-        "desc": "慢炖坨状牛腩，软糯Q弹，老少皆宜",
-        "tags": [
-          "咪咪辣"
-        ],
+        "desc": "微辣，慢炖坨状牛腩，软糯Q弹，老少皆宜",
+        "tags": [],
         "img": "https://s.koubei.com/BjHyGWcXMk3QCii2TYy7zRa78iHAahQf.jpg",
         "opts": [
           {
@@ -170,7 +168,7 @@ const MENU = [
         "tags": [
           "中辣"
         ],
-        "img": "https://s.koubei.com/aswSnS7dkPwFbsYY4PCZrEZXdQmTyJMX.jpg",
+        "img": "https://s.koubei.com/zzmb3HWJ53BkyEwjbjGyEaWJjxTyKMtt.jpg",
         "opts": [
           {
             "g": "粉面主食",
@@ -1025,14 +1023,22 @@ const MENU = [
     "items": [
       {
         "id": "p901",
-        "name": "闽南咸饭-单人份",
-        "price": 8.0,
-        "desc": "闽南家常风味，咸鲜温润，猪油干贝香菇提鲜，米饭粒粒分明，淡雅不腻。",
+        "name": "炒菜-素炒小白菜",
+        "price": 18.0,
+        "desc": "整体少油入口脆爽，清爽解腻，水润回甘，软嫩不软烂！",
         "tags": [],
-        "img": "https://s.koubei.com/HdAK7wJP2PXzPMyWr22ncJCWNiz8rJXP.jpg"
+        "img": "https://s.koubei.com/fZGCDRM4rDbfx3yQcwyE2NjkikFkN6SM.jpg"
       },
       {
         "id": "p902",
+        "name": "炒菜-清炒瓠子",
+        "price": 18.0,
+        "desc": "软糯顺滑，自带天然清甜，整体口味清淡温润，细嫩多汁。",
+        "tags": [],
+        "img": "https://s.koubei.com/X66rh54xppzmnGM52daPbJPk2kA3TiWs.jpg"
+      },
+      {
+        "id": "p903",
         "name": "炒菜-爆炒筋头巴脑",
         "price": 32.0,
         "desc": "牛肉筋软糯耐嚼，外酥里嫩，鲜辣回甜，锅气十足",
@@ -1040,7 +1046,7 @@ const MENU = [
         "img": "https://s.koubei.com/xdPzTZczsdwcRGYAbH3wE4WXXfDsxXPE.jpg"
       },
       {
-        "id": "p903",
+        "id": "p904",
         "name": "炒菜-醋溜滑蛋",
         "price": 22.0,
         "desc": "鸡蛋嫩滑蓬松，酸香开胃，口感层次分明，汁浓味足。",
@@ -1048,23 +1054,7 @@ const MENU = [
         "img": "https://s.koubei.com/Rzj5dx4BChH7RaDEZSMjn7S5YFN3ZrAQ.jpg"
       },
       {
-        "id": "p904",
-        "name": "炒菜-青椒茄子",
-        "price": 22.0,
-        "desc": "茄子软糯，青椒清香，经典家常味",
-        "tags": [],
-        "img": "https://s.koubei.com/zkJMYMASxKeAEwmY8a5dZZz5nmiBJ7t3.jpg"
-      },
-      {
         "id": "p905",
-        "name": "炒菜-清炒苕尖",
-        "price": 18.0,
-        "desc": "苕尖脆嫩清甜，蒜香清爽",
-        "tags": [],
-        "img": "https://s.koubei.com/fhYDEpQxHsRT6DrXQTbGb3Zh8kfNW2H6.jpg"
-      },
-      {
-        "id": "p906",
         "name": "炒菜-清炒空心菜",
         "price": 18.0,
         "desc": "空心菜脆嫩水润，蒜香清爽",
@@ -1072,7 +1062,7 @@ const MENU = [
         "img": "https://s.koubei.com/F2FPeMEr6StBFHRpGc2mkY2iKHYw4NKW.jpg"
       },
       {
-        "id": "p907",
+        "id": "p906",
         "name": "炒菜-瓠子烧五花肉",
         "price": 32.0,
         "desc": "肉香打底，瓠子自带清甜，经典家常味",
@@ -1080,7 +1070,7 @@ const MENU = [
         "img": "https://s.koubei.com/EKK4KdGiKD86Ef37F4Shhw3HxbTkCTAs.jpg"
       },
       {
-        "id": "p908",
+        "id": "p907",
         "name": "炒菜-家常炒丝瓜",
         "price": 22.0,
         "desc": "经典家常口味，辣度柔和",
@@ -1088,12 +1078,14 @@ const MENU = [
         "img": "https://s.koubei.com/HtrhyEQznDbeFcHJYhRDR8t54A3pxDxz.jpg"
       },
       {
-        "id": "p909",
-        "name": "炒菜-擂椒烧豆角",
-        "price": 22.0,
-        "desc": "豆角脆韧，擂椒焦香入味",
-        "tags": [],
-        "img": "https://s.koubei.com/6tp4iNTBjkX57XQWiTHccQbGpacXzhei.jpg"
+        "id": "p908",
+        "name": "闽南咸饭-单人份",
+        "price": 8.0,
+        "desc": "闽南家常风味，咸鲜温润，猪油干贝香菇提鲜，米饭粒粒分明，淡雅不腻。",
+        "tags": [
+          "做法原因不可续加"
+        ],
+        "img": "https://s.koubei.com/HdAK7wJP2PXzPMyWr22ncJCWNiz8rJXP.jpg"
       }
     ]
   },
@@ -1103,7 +1095,7 @@ const MENU = [
     "items": [
       {
         "id": "p1001",
-        "name": "牛肉串",
+        "name": "牛肋条",
         "price": 5.0,
         "desc": "鲜牛肉肉质细嫩带微脆筋，烤后多汁，孜然肉香浓郁",
         "tags": [],
