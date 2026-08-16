@@ -2121,107 +2121,10 @@ const MENU = [
   },
   {
     "id": "cat16",
-    "name": "主食",
-    "items": [
-      {
-        "id": "p1601",
-        "name": "五常大米饭",
-        "price": 3.0,
-        "desc": "五常大米蒸制，米香软糯",
-        "tags": [],
-        "img": "https://s.koubei.com/kh22sxhaz6N5PkSJzGQ5JjbXjbHj5tHt.jpg"
-      },
-      {
-        "id": "p1602",
-        "name": "原汤粉/面",
-        "price": 8.0,
-        "desc": "原汤清鲜，粉面爽滑",
-        "tags": [],
-        "img": "https://s.koubei.com/QR7SZhNwtQkFY2TKpNMPbrhNA4RPfTBC.jpg",
-        "opts": [
-          {
-            "g": "粉面主食",
-            "req": true,
-            "opts": [
-              "圆粉",
-              "扁粉",
-              "宽粉",
-              "手工细面",
-              "手工扁面",
-              "手工宽面",
-              "碱面",
-              "豆丝",
-              "手工大宽粉"
-            ]
-          },
-          {
-            "g": "辣度",
-            "req": false,
-            "opts": [
-              "微辣",
-              "清汤不辣"
-            ]
-          },
-          {
-            "g": "加码小吃",
-            "req": false,
-            "opts": [
-              "加-卤蛋/枚",
-              "加-海带结2个",
-              "加-卤鸡爪/只",
-              "加-卤鸭掌/只"
-            ]
-          },
-          {
-            "g": "粉面（默认堂食不用选）",
-            "req": true,
-            "opts": [
-              "默认堂食碗",
-              "【外带】牛皮纸碗",
-              "【外带】干湿分离打包盒",
-              "【外带】品牌餐盒"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "p1603",
-        "name": "清汤小伢粉",
-        "price": 5.0,
-        "desc": "满20元且1.1米以下免费领取",
-        "tags": [],
-        "img": "https://s.koubei.com/RSdbYFbEH5G7ApMEFEX8Je3FtbGMAG6x.png",
-        "opts": [
-          {
-            "g": "粉面主食",
-            "req": true,
-            "opts": [
-              "圆粉",
-              "扁粉",
-              "宽粉",
-              "手工细面",
-              "手工扁面",
-              "手工宽面",
-              "碱面"
-            ]
-          },
-          {
-            "g": "辣度",
-            "req": true,
-            "opts": [
-              "清汤不辣"
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "cat17",
     "name": "酒水饮料",
     "items": [
       {
-        "id": "p1701",
+        "id": "p1601",
         "name": "百岁山",
         "price": 3.0,
         "desc": "",
@@ -2239,7 +2142,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1702",
+        "id": "p1602",
         "name": "百事可乐",
         "price": 3.0,
         "desc": "",
@@ -2257,7 +2160,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1703",
+        "id": "p1603",
         "name": "雪碧",
         "price": 3.0,
         "desc": "",
@@ -2275,7 +2178,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1704",
+        "id": "p1604",
         "name": "芬达",
         "price": 3.0,
         "desc": "",
@@ -2293,7 +2196,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1705",
+        "id": "p1605",
         "name": "维他奶",
         "price": 4.0,
         "desc": "",
@@ -2312,7 +2215,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1706",
+        "id": "p1606",
         "name": "娃哈哈（小）",
         "price": 3.0,
         "desc": "",
@@ -2331,7 +2234,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1707",
+        "id": "p1607",
         "name": "娃哈哈（大）",
         "price": 7.0,
         "desc": "",
@@ -2350,7 +2253,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1708",
+        "id": "p1608",
         "name": "椰树椰汁（245ml）",
         "price": 6.0,
         "desc": "",
@@ -2368,7 +2271,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1709",
+        "id": "p1609",
         "name": "（橙诺）大窑",
         "price": 6.0,
         "desc": "",
@@ -2386,7 +2289,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1710",
+        "id": "p1610",
         "name": "（荔爱）大窑",
         "price": 6.0,
         "desc": "",
@@ -2404,7 +2307,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1711",
+        "id": "p1611",
         "name": "大可乐",
         "price": 12.0,
         "desc": "",
@@ -2422,7 +2325,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1712",
+        "id": "p1612",
         "name": "大雪碧",
         "price": 12.0,
         "desc": "",
@@ -2440,7 +2343,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1713",
+        "id": "p1613",
         "name": "大椰汁",
         "price": 25.0,
         "desc": "",
@@ -2458,7 +2361,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1714",
+        "id": "p1614",
         "name": "瓶装-雪花勇闯天涯",
         "price": 7.0,
         "desc": "",
@@ -2476,7 +2379,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1715",
+        "id": "p1615",
         "name": "小毛铺",
         "price": 20.0,
         "desc": "",
@@ -2494,7 +2397,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1716",
+        "id": "p1616",
         "name": "瓶装-雪花纯生",
         "price": 10.0,
         "desc": "",
@@ -2512,7 +2415,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1717",
+        "id": "p1617",
         "name": "小劲酒",
         "price": 18.0,
         "desc": "",
@@ -2530,7 +2433,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1718",
+        "id": "p1618",
         "name": "绿豆冰沙",
         "price": 3.0,
         "desc": "",
@@ -2538,7 +2441,7 @@ const MENU = [
         "img": "https://s.koubei.com/6yx8GpH33TW37swsmPGNSm52PhMzEwSx.jpg"
       },
       {
-        "id": "p1719",
+        "id": "p1619",
         "name": "维维豆奶-原味",
         "price": 5.0,
         "desc": "",
@@ -2556,7 +2459,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1720",
+        "id": "p1620",
         "name": "维维豆奶-绿豆百合味",
         "price": 5.0,
         "desc": "",
@@ -2574,7 +2477,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1721",
+        "id": "p1621",
         "name": "燕京U8啤酒",
         "price": 8.0,
         "desc": "",
@@ -2592,7 +2495,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1722",
+        "id": "p1622",
         "name": "百威纯生啤酒",
         "price": 10.0,
         "desc": "",
@@ -2610,293 +2513,12 @@ const MENU = [
         ]
       },
       {
-        "id": "p1723",
+        "id": "p1623",
         "name": "橙C酸奶",
         "price": 6.0,
         "desc": "",
         "tags": [],
         "img": "https://s.koubei.com/QXSc5WzMGaYWMJMjwa733mkcn4QfHJHH.jpeg"
-      }
-    ]
-  },
-  {
-    "id": "cat18",
-    "name": "团购商品",
-    "items": [
-      {
-        "id": "p1801",
-        "name": "美团-【免费菜】秘制牛肉粉",
-        "price": 0.0,
-        "desc": "",
-        "tags": [],
-        "img": "https://s.koubei.com/6eD3GynkPWjF7K6iJZiyfkseXTNwNGCc.jpeg",
-        "opts": [
-          {
-            "g": "粉面主食",
-            "req": true,
-            "opts": [
-              "圆粉",
-              "扁粉",
-              "宽粉",
-              "手工大宽粉",
-              "手工细面",
-              "手工扁面",
-              "手工宽面",
-              "碱面",
-              "豆丝"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "p1802",
-        "name": "会员储值105元（美团代金券-收银处理）",
-        "price": 100.0,
-        "desc": "",
-        "tags": [],
-        "img": ""
-      },
-      {
-        "id": "p1803",
-        "name": "会员储值300元（美团代金券-收银处理）",
-        "price": 300.0,
-        "desc": "",
-        "tags": [],
-        "img": ""
-      }
-    ]
-  },
-  {
-    "id": "cat19",
-    "name": "打包餐盒",
-    "items": [
-      {
-        "id": "p1901",
-        "name": "牛皮纸碗",
-        "price": 0.5,
-        "desc": "牛皮纸打包碗，按需购买",
-        "tags": [],
-        "img": "https://s.koubei.com/G62AyzXdCWb6xNXCshMkNkPT55FBhSyZ.jpg"
-      },
-      {
-        "id": "p1902",
-        "name": "品牌餐盒",
-        "price": 1.0,
-        "desc": "品牌餐盒，适合外带打包",
-        "tags": [],
-        "img": "https://s.koubei.com/KHTcAfYwP8Kt6sCyYKWMRihrehdTKAWM.jpg"
-      },
-      {
-        "id": "p1903",
-        "name": "品牌餐盒（小）",
-        "price": 0.5,
-        "desc": "小号品牌餐盒，适合装纯主食，按需购买",
-        "tags": [],
-        "img": "https://s.koubei.com/hHTpaPfHiHHtfES6Fn2dEpFB5hDkFZDA.jpg"
-      },
-      {
-        "id": "p1904",
-        "name": "品牌干湿分离打包盒",
-        "price": 2.0,
-        "desc": "干湿分装，保持口感",
-        "tags": [],
-        "img": "https://s.koubei.com/eGXCKFRxkwAhQAfMxt847444QkFxirNa.jpg"
-      },
-      {
-        "id": "p1905",
-        "name": "炖锅打包盒",
-        "price": 2.0,
-        "desc": "炖锅专用打包盒",
-        "tags": [],
-        "img": "https://s.koubei.com/EDHNNmkFDsWQyRpXPJjkQj4ebeHyk7iA.jpg"
-      },
-      {
-        "id": "p1906",
-        "name": "外卖手提袋",
-        "price": 1.5,
-        "desc": "外卖手提袋，方便携带",
-        "tags": [],
-        "img": "https://s.koubei.com/Xi4fhCNaW6krZWYxwJHYJEr7WQepy7Z2.jpg"
-      },
-      {
-        "id": "p1907",
-        "name": "码子粉-品牌干湿分离打包盒",
-        "price": 2.5,
-        "desc": "码子粉专用，干湿分装",
-        "tags": [],
-        "img": "https://s.koubei.com/ztKDWDQ5fcDBShQRtPcwTie8bdGKbri3.jpg"
-      },
-      {
-        "id": "p1908",
-        "name": "鲜米粉/份（纯粉面主食）",
-        "price": 3.0,
-        "desc": "标准堂食分量，按需购买",
-        "tags": [],
-        "img": "https://s.koubei.com/hHNNwBjeBYp2J3CGhB3m5wNanCPBYMKA.jpg",
-        "opts": [
-          {
-            "g": "粉面主食",
-            "req": true,
-            "opts": [
-              "圆粉",
-              "扁粉",
-              "宽粉",
-              "手工大宽粉",
-              "手工细面",
-              "手工扁面",
-              "手工宽面",
-              "碱面",
-              "豆丝"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "p1909",
-        "name": "五常大米/袋",
-        "price": 108.0,
-        "desc": "五常大米袋装，按需购买",
-        "tags": [],
-        "img": "https://s.koubei.com/cWFPikKXeXTweyD4RZF3yBBdHzTd2jdE.jpg"
-      }
-    ]
-  },
-  {
-    "id": "cat20",
-    "name": "欢迎光临",
-    "items": [
-      {
-        "id": "p2001",
-        "name": "扫码点餐后送餐上桌，请勿换桌",
-        "price": 0.0,
-        "desc": "炒码类菜品每份现炒，因此高峰出餐较慢，请您理解与耐心等候\n若您时间紧张，不妨改日再来品尝，刘聋子希望给每位朋友带来美好的用餐体验\n感谢大家支持与厚爱！",
-        "tags": [],
-        "img": "https://s.koubei.com/s2tkh8dHY3eNbrNnSzmQReS68kmPbkAR.jpg"
-      }
-    ]
-  },
-  {
-    "id": "cat21",
-    "name": "外卖套餐",
-    "items": [
-      {
-        "id": "p2101",
-        "name": "【直播专享】招牌-秘制牛肉粉+牛肉汤卤蛋",
-        "price": 23.0,
-        "desc": "",
-        "tags": [],
-        "img": "",
-        "opts": [
-          {
-            "g": "粉面主食",
-            "req": true,
-            "opts": [
-              "圆粉",
-              "宽粉",
-              "扁粉"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "p2102",
-        "name": "红烧牛肉粉+卤蛋",
-        "price": 25.0,
-        "desc": "",
-        "tags": [],
-        "img": "",
-        "opts": [
-          {
-            "g": "粉面主食",
-            "req": true,
-            "opts": [
-              "圆粉",
-              "扁粉",
-              "宽粉"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "p2103",
-        "name": "特色牛三鲜粉+卤蛋",
-        "price": 27.0,
-        "desc": "",
-        "tags": [],
-        "img": "",
-        "opts": [
-          {
-            "g": "粉面主食",
-            "req": true,
-            "opts": [
-              "圆粉",
-              "扁粉",
-              "宽粉"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "p2104",
-        "name": "【另加】鲜米粉一份",
-        "price": 3.0,
-        "desc": "另加一份粉",
-        "tags": [],
-        "img": ""
-      }
-    ]
-  },
-  {
-    "id": "cat22",
-    "name": "差价",
-    "items": [
-      {
-        "id": "p2201",
-        "name": "差价",
-        "price": 0.5,
-        "desc": "",
-        "tags": [],
-        "img": ""
-      },
-      {
-        "id": "p2202",
-        "name": "差价10",
-        "price": 10.0,
-        "desc": "",
-        "tags": [],
-        "img": ""
-      },
-      {
-        "id": "p2203",
-        "name": "外部团餐100",
-        "price": 100.0,
-        "desc": "",
-        "tags": [],
-        "img": ""
-      },
-      {
-        "id": "p2204",
-        "name": "炖锅加码",
-        "price": 0.0,
-        "desc": "",
-        "tags": [],
-        "img": ""
-      },
-      {
-        "id": "p2205",
-        "name": "外部团餐1",
-        "price": 1.0,
-        "desc": "",
-        "tags": [],
-        "img": ""
-      },
-      {
-        "id": "p2206",
-        "name": "雪糕",
-        "price": 1.5,
-        "desc": "",
-        "tags": [],
-        "img": ""
       }
     ]
   }
