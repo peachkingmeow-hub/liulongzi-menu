@@ -276,9 +276,29 @@ const ADDON_PRICE = {
   '加-卤鸭掌/只': 6.00,
   '额外加一个鸡蛋炒': 3.00,
 };
+// ============ 主食加价（鲜货现炒码子「现炒码子主食」组） ============
+// 收银系统原设定：米饭/粥¥3、粉面/豆丝¥5、闽南咸饭¥8；门店统一调为 粉面/咸饭 ¥5
+// 默认选中「不要主食」（¥0），顾客主动选配米饭/粉面才加钱
+const STAPLE_PRICE = {
+  '配-米饭': 3.00,
+  '配-白米粥': 3.00,
+  '配-圆粉': 5.00,
+  '配-扁粉': 5.00,
+  '配-宽粉': 5.00,
+  '配-手工大宽粉': 5.00,
+  '配-手工细面': 5.00,
+  '配-手工扁面': 5.00,
+  '配-手工宽面': 5.00,
+  '配-碱面': 5.00,
+  '配-豆丝': 5.00,
+  '配-闽南咸饭': 5.00,
+  '不要主食': 0,
+};
 function getOptPrice(optName, catId) {
   // Check addon (粉面加码 / 加码小吃) prices first, then packing box prices
   if (ADDON_PRICE[optName]) return ADDON_PRICE[optName];
+  // 主食加价（配-米饭/配-粉面 等）
+  if (STAPLE_PRICE[optName] !== undefined) return STAPLE_PRICE[optName];
   // Fallback for unknown addons
   if (optName.startsWith('加码-')) return 22.00;
   if (optName.startsWith('加-')) return 3.00;
@@ -324,9 +344,34 @@ const SPEC_DEFAULT_PACKING = {
   '海鲜粥': { '大份': '【打包】炖锅打包盒', '小份': '【打包】品牌餐盒' },  // 大份¥2 / 小份¥1
 };
 
-// 统一取默认餐盒名（商品级 > 规格级 > 分类级）
-function getDefaultPacking(item, catId, specName, catName) {
+// ============ 规格 + 选项组合级默认餐盒（优先级最高） ============
+// 用于「选了某项规格、又选了某组里的非默认项」才需要换盒的场景
+// 例：鲜货现炒码子选「炒菜份量（大份）」且配了主食 → 菜饭要分开装 → 干湿分离盒 ¥2
+const COMBO_DEFAULT_PACKING = [
+  {
+    catName: '鲜货现炒码子',        // 分类名（包含匹配）
+    spec: '炒菜份量（大份）',        // 规格名（包含匹配）
+    group: '主食',                  // 需要检查的选项组（组名包含匹配）
+    notIn: ['不要主食'],            // 选中值不在此列表中时命中本规则
+    pack: '【打包】干湿分离打包盒',  // ¥2
+  },
+];
+
+// 统一取默认餐盒名（组合级 > 商品级 > 规格级 > 分类级）
+function getDefaultPacking(item, catId, specName, catName, selections) {
   if (!item) return '';
+  // 0) 规格 + 选项组合级
+  for (const r of COMBO_DEFAULT_PACKING) {
+    if (!catName || !catName.includes(r.catName)) continue;
+    if (!specName || !specName.includes(r.spec)) continue;
+    let sel = null;
+    if (selections) {
+      for (const k of Object.keys(selections)) {
+        if (k.includes(r.group)) { sel = selections[k]; break; }
+      }
+    }
+    if (sel && !r.notIn.includes(sel)) return r.pack;
+  }
   // 1) 商品级
   for (const r of ITEM_DEFAULT_PACKING) {
     if (item.name && item.name.includes(r.key)) return r.pack;
@@ -523,12 +568,21 @@ function updateCart() {
 
 // ============ SPEC SHEET ============
 // 当前选中规格对应的默认餐盒（商品级 > 规格级 > 分类级）
+// 预置主食组选中值（默认「不要主食」），供渲染与组合级餐盒规则判断
+// 必须在计算默认餐盒之前调用：否则"大份+主食"这类组合规则拿不到主食的选择
+function ensureStapleDefault(item) {
+  (item.opts||[]).forEach(g=>{
+    const isStaple = g.g.includes('主食') && g.opts.includes('不要主食');
+    if (isStaple && !specSelections[g.g]) specSelections[g.g] = '不要主食';
+  });
+}
+
 function currentDefaultPacking() {
   if(!specTarget) return null;
   const cat = MENU.find(c => c.items.some(i => i.id === specTarget.id));
   const catId = cat?.id || '';
   const specName = (specTarget.specs && specSpecIdx>=0) ? specTarget.specs[specSpecIdx].name : null;
-  return getDefaultPacking(specTarget, catId, specName, cat?.name) || null;
+  return getDefaultPacking(specTarget, catId, specName, cat?.name, specSelections) || null;
 }
 
 function updateConfirmLabel() {
@@ -543,6 +597,8 @@ function renderSpecBody() {
   const item = specTarget;
   const cat = MENU.find(c => c.items.some(i => i.id === item.id));
   const catId = cat?.id || '';
+  // 先预置主食组默认值（「不要主食」），再计算默认餐盒 —— 保证组合级规则能读到主食选择
+  ensureStapleDefault(item);
   const defaultPacking = currentDefaultPacking();
 
   // 清掉上一次的打包组选择，让默认餐盒按当前规格重新计算
@@ -581,9 +637,12 @@ function renderSpecBody() {
     }
     // 已选值不在本次渲染列表内则清空
     if(specSelections[g.g] && !renderOpts.includes(specSelections[g.g])) specSelections[g.g] = null;
+    // 主食组默认选「不要主食」（不加钱），顾客主动选配米饭/粉面才加价
+    const isStapleGroup = g.g.includes('主食') && renderOpts.includes('不要主食');
+    const defaultOpt = isStapleGroup ? '不要主食' : (g.req ? renderOpts[0] : null);
     renderOpts.forEach((o,i)=>{
       let active = specSelections[g.g] === o;
-      if(!active && !specSelections[g.g] && g.req && i===0){ active = true; specSelections[g.g]=o; }
+      if(!active && !specSelections[g.g] && defaultOpt && o===defaultOpt){ active = true; specSelections[g.g]=o; }
       const optPrice = getOptPrice(o, catId);
       const priceTag = optPrice > 0 ? `<small style="color:#e8500d"> +¥${optPrice}</small>` : '';
       html+=`<div class="spec-opt${active?' active':''}" onclick="selectOpt('${g.g}','${o}',this)" data-opt-price="${optPrice}">${o}${priceTag}</div>`;
@@ -663,6 +722,9 @@ function selectOpt(group, val, el) {
 
   // Normal select logic
   specSelections[group] = val;
+  // 主食选择会影响默认餐盒（大份炒菜配主食 → 干湿分离盒 ¥2），需整页重渲染
+  const _isStapleGroup = group.includes('主食') && (specTarget?.opts||[]).some(g => g.g === group && g.opts.includes('不要主食'));
+  if (_isStapleGroup) { renderSpecBody(); return; }
   const parent = el.closest('.spec-opts');
   parent.querySelectorAll('.spec-opt').forEach(e=>e.classList.remove('active'));
   el.classList.add('active');

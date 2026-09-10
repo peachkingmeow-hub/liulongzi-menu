@@ -2327,24 +2327,6 @@ const MENU = [
             ]
           }
         ]
-      },
-      {
-        "id": "p1005",
-        "name": "香蕉吐司",
-        "price": 8.0,
-        "desc": "外酥内软，老少皆宜，微甜",
-        "tags": [],
-        "img": "https://s.koubei.com/Y7hS3K2SBKB8KkSAaDyxyZCxFetexpJh.jpg",
-        "opts": [
-          {
-            "g": "小吃做法",
-            "req": false,
-            "opts": [
-              "打包带走",
-              "不要葱花"
-            ]
-          }
-        ]
       }
     ]
   },
