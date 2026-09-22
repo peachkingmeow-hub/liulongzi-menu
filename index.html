@@ -129,7 +129,8 @@ a{text-decoration:none;color:inherit}
 .price-row{display:flex;justify-content:space-between;padding:6px 0;font-size:14px;color:#555}
 .price-row.total{font-size:17px;font-weight:700;color:var(--text);padding-top:10px;border-top:1.5px solid #e0e0e0;margin-top:4px}
 .price-row.total span:last-child{color:var(--primary)}
-.op-foot{padding:16px;background:#fff;border-top:1px solid #eee;display:flex;gap:10px}
+.op-foot{padding:16px;background:#fff;border-top:1px solid #eee;display:flex;gap:10px;align-items:center}
+.op-foot-total{font-size:16px;font-weight:700;color:var(--primary);white-space:nowrap}
 .btn-reorder{flex:1;border:1.5px solid var(--primary);background:#fff;color:var(--primary);border-radius:24px;padding:13px;font-size:15px;font-weight:700;cursor:pointer}
 .btn-confirm-order{flex:2;background:var(--primary);color:#fff;border:none;border-radius:24px;padding:13px;font-size:15px;font-weight:700;cursor:pointer}
 .empty-cart{text-align:center;padding:40px 20px;color:#aaa;font-size:15px}
@@ -215,8 +216,10 @@ a{text-decoration:none;color:inherit}
     <span class="op-back" id="opBack" data-page-node-id="nutRsOiRSuvKDlPHg7Katv">←</span>
     <span data-page-node-id="oK5DOIWE4YZgPOLXT5TH7v">订单明细</span>
   </div>
+  <div class="op-total-bar" id="opTotalBar"></div>
   <div class="op-body" id="opBody" data-page-node-id="3Kh7Me7z0o6H8oDVHM1tXW"></div>
   <div class="op-foot" data-page-node-id="xSuXafEj33SGwOFVGdbv1m">
+    <div class="op-foot-total" id="opFootTotal"></div>
     <button class="btn-reorder" id="btnReorder" data-page-node-id="Aw0rC92mKu7WyP4MY7fKn7">继续点餐</button>
     <button class="btn-confirm-order" id="btnConfirmOrder" data-page-node-id="uAMG5SEDS7Nhbj5e6PljJ6">确认下单</button>
   </div>
@@ -312,13 +315,13 @@ function getOptPrice(optName, catId) {
 // ============ CATEGORY → DEFAULT PACKING ============
 // Key = category ID, Value = preferred default packaging option name
 // cat1 招牌牛肉粉→干湿分离盒¥2 | cat4 鲜鱼汤-现炒码子粉→码子粉干湿分离¥2.5
-// cat5 掺汤+cat6 海鲜粥+cat7 新品+cat8 炒菜+cat11 时令鲜汤+cat13 炒粉面饭→品牌餐盒¥1
+// cat5 掺汤→干湿分离盒¥2（2026-09-22 起）| cat6 海鲜粥+cat7 新品+cat8 炒菜+cat11 时令鲜汤+cat13 炒粉面饭→品牌餐盒¥1
 // cat9 炖锅→炖锅打包盒¥2 | cat10 烧烤→打包带走(免费) | cat12 卤菜凉菜→码子方盒¥0.5
 // cat2 特色小吃 / cat3 饮品 / cat14 主食 / cat15 酒水饮料 → 无默认餐盒（主食部分商品走商品级）
 const CAT_DEFAULT_PACKING = {
   'cat1': '【打包】干湿分离打包盒',      // 招牌牛肉粉
   'cat4': '【打包】码子粉干湿分离打包盒', // 鲜鱼汤-现炒码子粉
-  'cat5': '【打包】品牌餐盒',            // 汉川特色掺汤
+  'cat5': '【打包】干湿分离打包盒',      // 汉川特色掺汤（2026-09-22 门店要求：统一用干湿分离盒 ¥2）
   'cat6': '【打包】品牌餐盒',            // 海鲜粥（小份；大份走规格级→炖锅打包盒）
   'cat7': '【打包】品牌餐盒',            // 新品专区
   'cat8': '【打包】品牌餐盒',            // 鲜货现炒码子
@@ -331,6 +334,14 @@ const CAT_DEFAULT_PACKING = {
 
 // Categories with FREE packing (no charge) —— 烧烤打包带走免费
 const CAT_FREE_PACKING = new Set(['cat10']);
+
+// ============ 分类级「可选打包盒」列表 ============
+// 默认情况下规格页只显示命中的那一种餐盒；若某分类希望让顾客自己挑餐盒，在此列出全部可选餐盒。
+// 命中规则（组合级 > 商品级 > 规格级 > 分类级）算出的那一种会被自动预选，顾客可点击切换。
+const CAT_PACKING_CHOICES = {
+  // 鲜货现炒码子：品牌餐盒 ¥1（默认） / 干湿分离码子打包盒 ¥2.5（2026-09-22 用户要求增加）
+  'cat8': ['【打包】品牌餐盒', '【打包】码子粉干湿分离打包盒'],
+};
 
 // ============ 商品级默认餐盒（优先级最高） ============
 // 同一分类下不同商品用不同餐盒时使用；按商品名匹配（包含即命中）
@@ -627,16 +638,27 @@ function renderSpecBody() {
       const filtered = g.opts.filter(o => /打包|外带|餐盒|带走|堂食|其他需求/.test(o));
       if (filtered.length) showOpts = filtered;
     }
-    const isReq = (isPackingGroup && defaultPacking) ? true : g.req;
-    specGroupsReq[g.g] = isReq;
-    html+=`<div class="spec-group"><div class="spec-group-title">${isPackingGroup&&defaultPacking?'默认餐盒':g.g}${isReq?' <span class="req">必选</span>':''}</div><div class="spec-opts">`;
-    // 有默认餐盒时只渲染匹配项；收银系统缺该选项时按门店规则兜底显示，保证计价完整
+    // 有默认餐盒时默认只渲染命中项；若该分类配了「可选打包盒」列表（CAT_PACKING_CHOICES），则全部列出供顾客切换
+    // 收银系统缺该选项时按门店规则兜底显示（虚拟选项），保证计价完整
     let renderOpts = showOpts;
     if (isPackingGroup && defaultPacking) {
-      const bestOpt = findBestPackOpt(defaultPacking, showOpts) || defaultPacking;
-      renderOpts = [bestOpt];
-      specSelections[g.g] = bestOpt;
+      const choices = CAT_PACKING_CHOICES[catId];
+      if (choices && choices.length > 1) {
+        const hit = findBestPackOpt(defaultPacking, choices) || defaultPacking;
+        renderOpts = choices.includes(hit) ? choices.slice() : choices.concat([hit]);
+        specSelections[g.g] = hit;
+      } else {
+        const bestOpt = findBestPackOpt(defaultPacking, showOpts) || defaultPacking;
+        renderOpts = [bestOpt];
+        specSelections[g.g] = bestOpt;
+      }
     }
+    const isReq = (isPackingGroup && defaultPacking) ? true : g.req;
+    specGroupsReq[g.g] = isReq;
+    const groupTitle = (isPackingGroup && defaultPacking)
+      ? (renderOpts.length > 1 ? '打包餐盒' : '默认餐盒')
+      : g.g;
+    html+=`<div class="spec-group"><div class="spec-group-title">${groupTitle}${isReq?' <span class="req">必选</span>':''}</div><div class="spec-opts">`;
     // 已选值不在本次渲染列表内则清空
     if(specSelections[g.g] && !renderOpts.includes(specSelections[g.g])) specSelections[g.g] = null;
     // 主食组默认选「不要主食」（不加钱），顾客主动选配米饭/粉面才加价
@@ -864,6 +886,11 @@ function showOrderPage() {
   const body = document.getElementById('opBody');
   const total = cart.reduce((s,c)=>s+c.price*c.qty,0);
   const count = cart.reduce((s,c)=>s+c.qty,0);
+
+  // 置顶合计栏 + 底部合计（固定显示，截图任何位置都可见）
+  document.getElementById('opTotalBar').innerHTML =
+    `<span>共 ${count} 件</span><span>合计 <span class="op-total-num">¥${total.toFixed(2)}</span></span>`;
+  document.getElementById('opFootTotal').textContent = `合计 ¥${total.toFixed(2)}`;
 
   let itemsHtml = cart.map(c=>`
     <div class="op-row">
