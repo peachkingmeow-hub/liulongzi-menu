@@ -169,7 +169,7 @@ const MENU = [
         "price": 25.0,
         "desc": "脆爽与软糯交织，中辣过瘾",
         "tags": [],
-        "img": "https://s.koubei.com/zzmb3HWJ53BkyEwjbjGyEaWJjxTyKMtt.jpg",
+        "img": "https://s.koubei.com/nzAJzjJaFxrKzWi2RpGWT8zwy6RRrWdE.jpg",
         "opts": [
           {
             "g": "粉面主食",
@@ -394,37 +394,6 @@ const MENU = [
             "price": 25.0
           }
         ]
-      },
-      {
-        "id": "p107",
-        "name": "清汤小伢粉",
-        "price": 5.0,
-        "desc": "满20元且1.1米以下免费领取",
-        "tags": [],
-        "img": "https://s.koubei.com/RSdbYFbEH5G7ApMEFEX8Je3FtbGMAG6x.png",
-        "opts": [
-          {
-            "g": "粉面主食",
-            "req": true,
-            "opts": [
-              "圆粉",
-              "扁粉",
-              "宽粉",
-              "手工细面",
-              "手工扁面",
-              "手工宽面",
-              "碱面",
-              "湖南宽粉"
-            ]
-          },
-          {
-            "g": "辣度",
-            "req": true,
-            "opts": [
-              "清汤不辣"
-            ]
-          }
-        ]
       }
     ]
   },
@@ -533,35 +502,27 @@ const MENU = [
       },
       {
         "id": "p305",
-        "name": "鲜榨西瓜汁/杯",
-        "price": 12.0,
-        "desc": "鲜榨麒麟瓜，无糖浆无添加，清甜解腻。",
-        "tags": [],
-        "img": "https://s.koubei.com/cEf5rsHBiSYJQBAWk8CjmhmxnbDJWKS8.jpg"
-      },
-      {
-        "id": "p306",
-        "name": "西瓜鲜果切",
-        "price": 8.0,
-        "desc": "现切红瓤，厚实爆汁；清甜不腻，盒装即享。",
-        "tags": [],
-        "img": "https://s.koubei.com/Kj8yPnpbNhwN5GwNK8XzMGhKa5E4zyT7.jpg"
-      },
-      {
-        "id": "p307",
-        "name": "鲜榨西瓜汁/扎",
-        "price": 28.0,
-        "desc": "鲜榨麒麟瓜，无糖浆无添加，清甜解腻。",
-        "tags": [],
-        "img": "https://s.koubei.com/xybbYPpMWcDFXdJ8HkmxRM4XHAsXAPeB.jpg"
-      },
-      {
-        "id": "p308",
         "name": "鸭屎香蜂蜜双柠茶",
         "price": 12.0,
         "desc": "鸭屎香茶底醇厚回甘，香水双柠鲜爽，蜂蜜柔和，冰爽解腻",
         "tags": [],
         "img": "https://s.koubei.com/hBTaJejZQGGJZsrNYncBTkXTcS6eYQi5.jpg"
+      },
+      {
+        "id": "p306",
+        "name": "红糖米酒汤圆",
+        "price": 6.0,
+        "desc": "红糖醇甜、米酒清香、汤圆软糯。",
+        "tags": [],
+        "img": "https://s.koubei.com/PA6mFj5ETRzStydcFNxzECnbaHYmNPjD.jpg"
+      },
+      {
+        "id": "p307",
+        "name": "桂花糊米酒",
+        "price": 6.0,
+        "desc": "桂花清香、米酒甜润、口感绵稠。",
+        "tags": [],
+        "img": "https://s.koubei.com/ATPGXRzBG2fckB7nWDKdFDATsfNYQWDs.jpg"
       }
     ]
   },
@@ -848,7 +809,9 @@ const MENU = [
         "price": 36.0,
         "desc": "黄骨鱼现杀、现做，出餐约20分钟",
         "tags": [
-          "新品"
+          "新品",
+          "黑胡椒",
+          "原味"
         ],
         "img": "https://s.koubei.com/HSiCCj8Q27d36cHNGHNdPtjdkbZXRmPA.jpg",
         "opts": [
@@ -898,7 +861,8 @@ const MENU = [
         "price": 20.0,
         "desc": "汉川掺汤精选鲜嫩瘦肉，以滚烫高汤快速汆熟，佐以足量黑胡椒，肉香醇厚，暖胃饱腹。",
         "tags": [
-          "做法原因不可续"
+          "做法原因不可续",
+          "黑胡椒"
         ],
         "img": "https://s.koubei.com/NEasQ5Q7hrhKhpj4j465cXsY4XSBmcJJ.jpg",
         "opts": [
@@ -960,7 +924,9 @@ const MENU = [
         "name": "鲜虾牛肉粥",
         "price": 18.0,
         "desc": "绵密粥底中牛肉嫩滑与海鲜爽脆并存，每一口都是极致平衡。",
-        "tags": [],
+        "tags": [
+          "咸鲜"
+        ],
         "img": "https://s.koubei.com/e6DHiX8xG26ebPpjKt4ZZczGyJGeNpwi.jpg",
         "specs": [
           {
@@ -978,7 +944,9 @@ const MENU = [
         "name": "鲜虾财鱼粥",
         "price": 18.0,
         "desc": "绵密粥底中，财鱼细嫩爽滑，鲜虾q弹鲜甜，每一口都是极致平衡。",
-        "tags": [],
+        "tags": [
+          "咸鲜"
+        ],
         "img": "https://s.koubei.com/3jpXKdwDxBKBWsKJssKkMZZjybTy5C72.jpg",
         "specs": [
           {
@@ -996,7 +964,9 @@ const MENU = [
         "name": "鲜虾鳝鱼粥",
         "price": 28.0,
         "desc": "绵密粥底中，鳝鱼滑嫩鲜香，鲜虾弹嫩鲜甜，每一口都是极致平衡。",
-        "tags": [],
+        "tags": [
+          "咸鲜"
+        ],
         "img": "https://s.koubei.com/djwdP2iYxZyBHsPCnbMjbcQH7SQkFXhS.jpg",
         "specs": [
           {
@@ -1033,6 +1003,46 @@ const MENU = [
         "desc": "蟹钳鲜香麻辣，层次丰富",
         "tags": [],
         "img": "https://s.koubei.com/xTXc3rmNch23dYekDs5XHDE3DJpNPjhi.jpg"
+      },
+      {
+        "id": "p703",
+        "name": "砂锅番茄炖肉丸",
+        "price": 36.0,
+        "desc": "番茄慢熬红汤，酸甜浓郁，蛋花柔滑；手工肉丸吸饱鲜汁，弹嫩入味。",
+        "tags": [
+          "咸鲜"
+        ],
+        "img": "https://s.koubei.com/pj3HWxYA7a32WtePTMirtsTrw5rhabr4.jpg",
+        "opts": [
+          {
+            "g": "温馨提示",
+            "req": true,
+            "opts": [
+              "堂食",
+              "【打包】炖锅1768打包盒",
+              "其他需求请备注"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "p704",
+        "name": "红烧蹄膀盖码饭",
+        "price": 22.0,
+        "desc": "",
+        "tags": [],
+        "img": "https://s.koubei.com/iYtCFdfNex4RyHXjQpbHQc5MnyP6Ry3c.jpg",
+        "opts": [
+          {
+            "g": "温馨提示",
+            "req": true,
+            "opts": [
+              "堂食",
+              "【打包】牛皮纸碗",
+              "其他需求请备注"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -1091,7 +1101,7 @@ const MENU = [
       },
       {
         "id": "p802",
-        "name": "鲜牛肉炒樟树港辣椒",
+        "name": "鲜牛肉炒辣椒",
         "price": 32.0,
         "desc": "鲜牛肉滑嫩，辣椒鲜香下饭",
         "tags": [],
@@ -1336,9 +1346,9 @@ const MENU = [
       },
       {
         "id": "p807",
-        "name": "樟树港辣椒炒肉",
+        "name": "辣椒炒肉",
         "price": 28.0,
-        "desc": "樟树港辣椒别具清香，肉片鲜嫩，微辣下饭",
+        "desc": "下饭神器！！",
         "tags": [],
         "img": "https://s.koubei.com/mTnbFBsTcS7Bks5cyHwBd8fjdW3bBJYK.jpg",
         "opts": [
@@ -1878,7 +1888,9 @@ const MENU = [
         "name": "番茄炒蛋",
         "price": 15.0,
         "desc": "酸甜开胃，经典家常味",
-        "tags": [],
+        "tags": [
+          "咸甜"
+        ],
         "img": "https://s.koubei.com/3QiH37pYbaiFtyNdxjYsPaTYHBBCbR7D.jpg",
         "opts": [
           {
@@ -2025,7 +2037,9 @@ const MENU = [
         "name": "洋葱炒蛋",
         "price": 15.0,
         "desc": "",
-        "tags": [],
+        "tags": [
+          "咸鲜"
+        ],
         "img": "https://s.koubei.com/n4zfPGPGW4a32En2nY4d4SsiM4ikeATt.jpg",
         "opts": [
           {
@@ -2074,7 +2088,9 @@ const MENU = [
         "name": "丝瓜炒蛋",
         "price": 18.0,
         "desc": "",
-        "tags": [],
+        "tags": [
+          "咸甜"
+        ],
         "img": "https://s.koubei.com/jwx73p8EDt34ChNfW8dyXeEZYwHSBTXk.jpg",
         "opts": [
           {
@@ -2157,7 +2173,7 @@ const MENU = [
         "id": "p901",
         "name": "特色牛杂炖粉",
         "price": 68.0,
-        "desc": "新鲜牛肚、牛筋、牛肉配秘制锅底，细火慢炖，辣滚香鲜，汤醇味厚；汤汁通过高温融入米粉，入口软烂适中，咸淡适宜。",
+        "desc": "新鲜牛肉、牛肚、牛筋、牛肠、牛黄喉配秘制锅底，细火慢炖，辣滚香鲜，汤醇味厚；汤汁通过高温融入米粉，入口软烂适中，咸淡适宜。",
         "tags": [],
         "img": "https://s.koubei.com/neA5isTiMPnST5Zbj5n5K2JPEK8WnGXY.jpg",
         "opts": [
@@ -2233,8 +2249,66 @@ const MENU = [
     "items": [
       {
         "id": "p1001",
-        "name": "牛肉串",
+        "name": "原味羊肉串",
         "price": 5.0,
+        "desc": "精选羊排肉，肥瘦相间，焦嫩多汁。",
+        "tags": [
+          "不可免葱"
+        ],
+        "img": "https://s.koubei.com/tsJSWmyaSw678KMp7rmYyjPJxDPC47HS.jpg",
+        "opts": [
+          {
+            "g": "辣度",
+            "req": true,
+            "opts": [
+              "微辣",
+              "中辣",
+              "特辣",
+              "不要辣"
+            ]
+          },
+          {
+            "g": "小吃做法",
+            "req": false,
+            "opts": [
+              "打包带走"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "p1002",
+        "name": "原味猪肉串",
+        "price": 3.0,
+        "desc": "鲜肉现穿，清淡原味，肉汁丰富。",
+        "tags": [
+          "不可免葱"
+        ],
+        "img": "https://s.koubei.com/MZip3BA6TTmHWb7DReYBeGeyJd24JN85.jpg",
+        "opts": [
+          {
+            "g": "辣度",
+            "req": true,
+            "opts": [
+              "微辣",
+              "中辣",
+              "特辣",
+              "不要辣"
+            ]
+          },
+          {
+            "g": "小吃做法",
+            "req": false,
+            "opts": [
+              "打包带走"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "p1003",
+        "name": "牛肋条",
+        "price": 6.0,
         "desc": "鲜牛肉肉质细嫩带微脆筋，烤后多汁，孜然肉香浓郁",
         "tags": [],
         "img": "https://s.koubei.com/HhxjXThFJby3CXQZP333dfTaACCfJQEm.jpg",
@@ -2260,7 +2334,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1002",
+        "id": "p1004",
         "name": "猪脆骨",
         "price": 3.0,
         "desc": "脆嫩有嚼劲，烧烤风味十足，默认微辣",
@@ -2288,7 +2362,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1003",
+        "id": "p1005",
         "name": "王中王火腿肠",
         "price": 5.0,
         "desc": "外焦里嫩，经典烧烤风味，默认微辣",
@@ -2316,7 +2390,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1004",
+        "id": "p1006",
         "name": "烤凤爪",
         "price": 12.0,
         "desc": "先卤后烤，软糯Q弹",
@@ -2344,7 +2418,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1005",
+        "id": "p1007",
         "name": "西葫芦",
         "price": 4.0,
         "desc": "烤后清甜，软嫩多汁，清爽解腻",
@@ -2372,7 +2446,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1006",
+        "id": "p1008",
         "name": "烤鸡胗",
         "price": 3.0,
         "desc": "炭火现烤鸡胗，外皮微焦内里脆弹，满满粗孜然香，越嚼越上头。",
@@ -2400,7 +2474,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1007",
+        "id": "p1009",
         "name": "烤黄喉",
         "price": 5.0,
         "desc": "黄喉脆嫩爽口，炭火烤制，默认微辣",
@@ -2428,35 +2502,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1008",
-        "name": "猪肉串",
-        "price": 3.0,
-        "desc": "猪肉鲜香嫩口，现点现烤，默认微辣",
-        "tags": [],
-        "img": "https://s.koubei.com/CSP3fziP6cTkefdkHBEHmAcG7WeWMS68.jpg",
-        "opts": [
-          {
-            "g": "辣度",
-            "req": true,
-            "opts": [
-              "微辣",
-              "中辣",
-              "特辣",
-              "不要辣"
-            ]
-          },
-          {
-            "g": "小吃做法",
-            "req": false,
-            "opts": [
-              "打包带走",
-              "不要葱花"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "p1009",
+        "id": "p1010",
         "name": "糯筋子",
         "price": 3.0,
         "desc": "猪肉鲜香嫩口，现点现烤，默认微辣",
@@ -2484,7 +2530,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1010",
+        "id": "p1011",
         "name": "红糖烧饼",
         "price": 8.0,
         "desc": "",
@@ -2522,7 +2568,9 @@ const MENU = [
         "name": "财鱼皮蛋豆腐汤",
         "price": 28.0,
         "desc": "财鱼鲜嫩，皮蛋提香，汤清味鲜",
-        "tags": [],
+        "tags": [
+          "咸鲜"
+        ],
         "img": "https://s.koubei.com/4bhXSsdGzZd5AYJCmimKGCXMEDCZm6sP.jpg",
         "opts": [
           {
@@ -2541,8 +2589,11 @@ const MENU = [
         "name": "番茄蛋汤",
         "price": 18.0,
         "desc": "酸甜开胃，经典家常汤品",
-        "tags": [],
-        "img": "https://s.koubei.com/EZZ6aJ2H2kWFGxwW5WnTNArcHdJcn7kp.jpg",
+        "tags": [
+          "咸鲜",
+          "微酸"
+        ],
+        "img": "https://s.koubei.com/CMncDeY8YD7nRK74Jw8wMA66MXN2Y6sn.jpg",
         "opts": [
           {
             "g": "温馨提示",
@@ -2560,7 +2611,10 @@ const MENU = [
         "name": "玉米排骨汤/单人份",
         "price": 12.0,
         "desc": "玉米清甜，排骨软烂，汤鲜味浓",
-        "tags": [],
+        "tags": [
+          "咸鲜",
+          "微甜"
+        ],
         "img": "https://s.koubei.com/h4EHs3CySD5YCXsAb6zA4pwJG8ZbjENK.jpg",
         "opts": [
           {
@@ -2579,7 +2633,10 @@ const MENU = [
         "name": "标准份-玉米排骨汤",
         "price": 28.0,
         "desc": "适合2~3人分享，汤鲜味浓，滋补暖身",
-        "tags": [],
+        "tags": [
+          "咸鲜",
+          "微甜"
+        ],
         "img": "https://s.koubei.com/F3B8NfXWkYi5xte7byFjsDP3YpR5JcNi.jpg",
         "opts": [
           {
@@ -2598,7 +2655,10 @@ const MENU = [
         "name": "番茄肉片蛋汤",
         "price": 24.0,
         "desc": "番茄酸甜，肉片蛋花鲜嫩",
-        "tags": [],
+        "tags": [
+          "咸鲜",
+          "微酸"
+        ],
         "img": "https://s.koubei.com/rBRK8ZkY5QKRxzKSDKfJetCJt5nFhbQF.jpg",
         "opts": [
           {
@@ -2617,8 +2677,55 @@ const MENU = [
         "name": "排骨藕汤/单人份",
         "price": 12.0,
         "desc": "排骨软烂，莲藕软糯，汤鲜味浓",
-        "tags": [],
+        "tags": [
+          "咸鲜",
+          "黑胡椒"
+        ],
         "img": "https://s.koubei.com/PTWQTRnQFDWsjJ6s55yMEmPnATSHmYAf.jpg",
+        "opts": [
+          {
+            "g": "温馨提示",
+            "req": true,
+            "opts": [
+              "堂食",
+              "【打包】品牌餐盒",
+              "其他需求请备注"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "p1107",
+        "name": "中份-排骨藕汤",
+        "price": 28.0,
+        "desc": "适合2~3人分享，汤鲜味浓，滋补暖身",
+        "tags": [
+          "咸鲜",
+          "黑胡椒"
+        ],
+        "img": "https://s.koubei.com/BGJ4RR2P72mHnnCR2azCQySMjWPjcdM8.jpg",
+        "opts": [
+          {
+            "g": "温馨提示",
+            "req": true,
+            "opts": [
+              "堂食",
+              "【打包】品牌餐盒",
+              "其他需求请备注"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "p1108",
+        "name": "大份-排骨藕汤",
+        "price": 58.0,
+        "desc": "肉香醇厚、莲藕清甜、汤鲜味润。",
+        "tags": [
+          "咸鲜",
+          "黑胡椒"
+        ],
+        "img": "https://s.koubei.com/wykJWDetsBxENWxHQzaRpPA4KswfYciz.jpg",
         "opts": [
           {
             "g": "温馨提示",
@@ -2639,25 +2746,6 @@ const MENU = [
     "items": [
       {
         "id": "p1201",
-        "name": "卤鸭脖/根",
-        "price": 8.0,
-        "desc": "酱香醇厚，咸甜微辣，鸭脖紧实耐啃，油润入味，解馋过瘾。",
-        "tags": [],
-        "img": "https://s.koubei.com/ccYx54QxhEj5MSCiywaaxC5Thf652caB.jpg",
-        "opts": [
-          {
-            "g": "温馨提示",
-            "req": true,
-            "opts": [
-              "堂食",
-              "【打包】码子方盒",
-              "其他需求请备注"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "p1202",
         "name": "凉拌卤牛肉",
         "price": 24.0,
         "desc": "卤牛肉醇香，凉拌鲜辣爽口",
@@ -2676,7 +2764,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1203",
+        "id": "p1202",
         "name": "凉拌卤顺风",
         "price": 18.0,
         "desc": "卤猪耳脆嫩，凉拌香辣爽口",
@@ -2695,7 +2783,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1204",
+        "id": "p1203",
         "name": "皮蛋拌豆腐",
         "price": 12.0,
         "desc": "豆腐滑嫩，皮蛋鲜香开胃",
@@ -2714,7 +2802,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1205",
+        "id": "p1204",
         "name": "凉拌黄瓜",
         "price": 8.0,
         "desc": "黄瓜爽脆，蒜香酸辣开胃",
@@ -2733,7 +2821,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1206",
+        "id": "p1205",
         "name": "麻辣蛤蜊",
         "price": 12.0,
         "desc": "蛤蜊鲜嫩，鲜甜入味",
@@ -2752,7 +2840,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1207",
+        "id": "p1206",
         "name": "凉拌卤藕",
         "price": 12.0,
         "desc": "卤藕粉糯脆爽，凉拌鲜香",
@@ -2771,7 +2859,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1208",
+        "id": "p1207",
         "name": "凉拌毛豆",
         "price": 12.0,
         "desc": "毛豆鲜嫩，咸香微辣",
@@ -2790,7 +2878,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1209",
+        "id": "p1208",
         "name": "凉拌卤拼盘",
         "price": 28.0,
         "desc": "多款卤味拼盘，咸香丰富",
@@ -2809,7 +2897,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1210",
+        "id": "p1209",
         "name": "养生黑木耳",
         "price": 8.0,
         "desc": "木耳脆爽，酸辣清新开胃",
@@ -2839,7 +2927,8 @@ const MENU = [
         "price": 32.0,
         "desc": "鲜牛肉现炒，锅气十足，微辣入味；默认微辣",
         "tags": [
-          "微辣"
+          "微辣",
+          "做法原因不可续加"
         ],
         "img": "https://s.koubei.com/aJt8scATZQiTXHAeeezpfWzM244ijJS8.jpg",
         "opts": [
@@ -2883,7 +2972,8 @@ const MENU = [
         "price": 32.0,
         "desc": "卤牛肉干香，炒制后风味浓郁；默认微辣",
         "tags": [
-          "微辣"
+          "微辣",
+          "做法原因不可续加"
         ],
         "img": "https://s.koubei.com/bf3BRJnZSMxzTkWk8b77MrYM5JzCyhP3.jpg",
         "opts": [
@@ -2927,7 +3017,8 @@ const MENU = [
         "price": 22.0,
         "desc": "猪肉鲜嫩，搭配粉面饭，经典炒制；默认微辣",
         "tags": [
-          "微辣"
+          "微辣",
+          "做法原因不可续加"
         ],
         "img": "https://s.koubei.com/xirnhkYkwCZRJm4AiS5CDHryP7KcXWcC.jpg",
         "opts": [
@@ -2971,7 +3062,8 @@ const MENU = [
         "price": 18.0,
         "desc": "鸡蛋香嫩，火腿咸香，经典搭配；默认微辣",
         "tags": [
-          "微辣"
+          "微辣",
+          "做法原因不可续加"
         ],
         "img": "https://s.koubei.com/5inwRmYiB5663w2TPzhKKiY8bGYBki32.jpg",
         "opts": [
@@ -3015,7 +3107,8 @@ const MENU = [
         "price": 24.0,
         "desc": "卤猪耳脆嫩；默认微辣",
         "tags": [
-          "微辣"
+          "微辣",
+          "做法原因不可续加"
         ],
         "img": "https://s.koubei.com/8t5mZYPsmFmHwpfasKsNZGeRx363r6Xw.jpg",
         "opts": [
