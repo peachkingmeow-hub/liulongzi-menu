@@ -517,8 +517,8 @@ const MENU = [
         "tags": [],
         "img": "https://s.koubei.com/SH7NEyhzH6W4w3XXD6RZnHSjm7z7HiBi.jpg"
       },
-            {
-        "id": "p306",
+      {
+        "id": "p305",
         "name": "红糖米酒汤圆",
         "price": 6.0,
         "desc": "红糖醇甜、米酒清香、汤圆软糯。",
@@ -526,7 +526,7 @@ const MENU = [
         "img": "https://s.koubei.com/kHKa82TpjZ4tF6CkSsfDdHyiTjwQbjZ6.jpg"
       },
       {
-        "id": "p307",
+        "id": "p306",
         "name": "桂花糊米酒",
         "price": 6.0,
         "desc": "桂花清香、米酒甜润、口感绵稠。",
@@ -855,8 +855,8 @@ const MENU = [
         "tags": [],
         "img": "https://s.koubei.com/xTXc3rmNch23dYekDs5XHDE3DJpNPjhi.jpg"
       },
-                  {
-        "id": "p605",
+      {
+        "id": "p603",
         "name": "砂锅番茄炖肉丸",
         "price": 36.0,
         "desc": "番茄慢熬红汤，酸甜浓郁，蛋花柔滑；手工肉丸吸饱鲜汁，弹嫩入味。",
@@ -877,7 +877,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p606",
+        "id": "p604",
         "name": "红烧蹄膀",
         "price": 22.0,
         "desc": "",
@@ -2132,34 +2132,6 @@ const MENU = [
       },
       {
         "id": "p902",
-        "name": "原味牛肉串",
-        "price": 5.0,
-        "desc": "鲜肉现穿，回味咸鲜，细嫩弹香。",
-        "tags": [],
-        "img": "https://s.koubei.com/cDmy3kYFJQ7kCBJTSMRiTCMxNcaDhxs4.jpg",
-        "opts": [
-          {
-            "g": "辣度",
-            "req": true,
-            "opts": [
-              "微辣",
-              "中辣",
-              "特辣",
-              "不要辣"
-            ]
-          },
-          {
-            "g": "小吃做法",
-            "req": false,
-            "opts": [
-              "打包带走",
-              "不要葱花"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "p903",
         "name": "原味猪肉串",
         "price": 3.0,
         "desc": "鲜肉现穿，清淡原味，肉汁丰富。",
@@ -2187,34 +2159,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p904",
-        "name": "韩式五花肉串",
-        "price": 5.0,
-        "desc": "特选精五花，碳火烤制，焦香润口，甜香不腻。",
-        "tags": [],
-        "img": "https://s.koubei.com/p6hEDR7EYH8HxwJzPQRkbpkzeCFyWGMp.jpg",
-        "opts": [
-          {
-            "g": "辣度",
-            "req": true,
-            "opts": [
-              "微辣",
-              "中辣",
-              "特辣"
-            ]
-          },
-          {
-            "g": "小吃做法",
-            "req": false,
-            "opts": [
-              "打包带走",
-              "不要葱花"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "p905",
+        "id": "p903",
         "name": "牛肋条",
         "price": 6.0,
         "desc": "鲜牛肉肉质细嫩带微脆筋，烤后多汁，孜然肉香浓郁",
@@ -2242,7 +2187,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p906",
+        "id": "p904",
         "name": "猪脆骨",
         "price": 3.0,
         "desc": "脆嫩有嚼劲，烧烤风味十足，默认微辣",
@@ -2270,7 +2215,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p907",
+        "id": "p905",
         "name": "王中王火腿肠",
         "price": 5.0,
         "desc": "外焦里嫩，经典烧烤风味，默认微辣",
@@ -2298,7 +2243,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p908",
+        "id": "p906",
         "name": "烤凤爪",
         "price": 12.0,
         "desc": "先卤后烤，软糯Q弹",
@@ -2326,7 +2271,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p909",
+        "id": "p907",
         "name": "西葫芦",
         "price": 4.0,
         "desc": "烤后清甜，软嫩多汁，清爽解腻",
@@ -2354,7 +2299,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p910",
+        "id": "p908",
         "name": "烤鸡胗",
         "price": 3.0,
         "desc": "炭火现烤鸡胗，外皮微焦内里脆弹，满满粗孜然香，越嚼越上头。",
@@ -2382,7 +2327,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p911",
+        "id": "p909",
         "name": "烤黄喉",
         "price": 5.0,
         "desc": "黄喉脆嫩爽口，炭火烤制，默认微辣",
@@ -2410,7 +2355,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p912",
+        "id": "p910",
         "name": "糯筋子",
         "price": 3.0,
         "desc": "猪肉鲜香嫩口，现点现烤，默认微辣",
@@ -2438,7 +2383,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p913",
+        "id": "p911",
         "name": "红糖烧饼",
         "price": 8.0,
         "desc": "",
@@ -2455,6 +2400,26 @@ const MENU = [
               "不要辣"
             ]
           },
+          {
+            "g": "小吃做法",
+            "req": false,
+            "opts": [
+              "打包带走",
+              "不要葱花"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "p912",
+        "name": "香蕉吐司",
+        "price": 8.0,
+        "desc": "外酥内软，老少皆宜，微甜",
+        "tags": [
+          "咸甜"
+        ],
+        "img": "https://s.koubei.com/Y7hS3K2SBKB8KkSAaDyxyZCxFetexpJh.jpg",
+        "opts": [
           {
             "g": "小吃做法",
             "req": false,
