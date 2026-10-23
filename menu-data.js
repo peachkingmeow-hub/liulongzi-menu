@@ -833,6 +833,56 @@ const MENU = [
     ]
   },
   {
+    "id": "cat6b",
+    "name": "广式鲜粥",
+    "items": [
+      {
+        "id": "p1500",
+        "name": "广式鲜粥系列",
+        "price": 12.0,
+        "desc": "广式鲜粥以大米慢熬至绵滑，可选择搭配各种食材，鲜香温润、养胃易消化。",
+        "tags": [
+          "咸鲜"
+        ],
+        "img": "https://s.koubei.com/yZNk5xrWpi4Pmj2HCAPJnxJT3YSpXHPh.jpg",
+        "specs": [
+          {
+            "name": "皮蛋瘦肉粥",
+            "price": 12.0
+          },
+          {
+            "name": "瘦肉粥",
+            "price": 12.0
+          },
+          {
+            "name": "猪肝粥",
+            "price": 12.0
+          },
+          {
+            "name": "瘦肉猪肝粥",
+            "price": 16.0
+          },
+          {
+            "name": "财鱼粥",
+            "price": 18.0
+          },
+          {
+            "name": "鳝鱼粥",
+            "price": 38.0
+          },
+          {
+            "name": "财鱼鳝鱼粥",
+            "price": 32.0
+          },
+          {
+            "name": "牛肉粥",
+            "price": 28.0
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "cat6",
     "name": "新品专区",
     "items": [
