@@ -159,59 +159,6 @@ const MENU = [
       },
       {
         "id": "p103",
-        "name": "红烧牛肉粉",
-        "price": 25.0,
-        "desc": "微辣，慢炖坨状牛腩，软糯Q弹，老少皆宜",
-        "tags": [],
-        "img": "https://s.koubei.com/BjHyGWcXMk3QCii2TYy7zRa78iHAahQf.jpg",
-        "opts": [
-          {
-            "g": "粉面主食",
-            "req": true,
-            "opts": [
-              "圆粉",
-              "宽粉",
-              "手工大宽粉",
-              "手工细面",
-              "手工扁面",
-              "手工宽面",
-              "碱面",
-              "豆丝",
-              "湖南宽粉",
-              "扁粉"
-            ]
-          },
-          {
-            "g": "粉面加码",
-            "req": false,
-            "opts": [
-              "加码-红烧牛肉"
-            ]
-          },
-          {
-            "g": "加码小吃",
-            "req": false,
-            "opts": [
-              "加-卤蛋/枚",
-              "加-海带结2个",
-              "加-卤鸡爪/只"
-            ]
-          },
-          {
-            "g": "温馨提示",
-            "req": false,
-            "opts": [
-              "堂食",
-              "【打包】牛皮纸碗",
-              "【打包】干湿分离打包盒",
-              "【打包】品牌餐盒",
-              "其他需求请备注"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "p104",
         "name": "特色牛三鲜粉",
         "price": 25.0,
         "desc": "脆爽与软糯交织，中辣过瘾",
@@ -264,7 +211,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p105",
+        "id": "p104",
         "name": "津市麻辣牛肉粉",
         "price": 28.0,
         "desc": "湖南特色风味，干香麻辣，嚼劲十足！",
@@ -312,7 +259,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p106",
+        "id": "p105",
         "name": "鲜切原味牛肉粉",
         "price": 25.0,
         "desc": "大片牛肉卤香浓郁，配牛骨原汤，清淡鲜美，可选不辣或微辣",
@@ -375,7 +322,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p107",
+        "id": "p106",
         "name": "热干系列",
         "price": 8.0,
         "desc": "默认微辣",
@@ -434,7 +381,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p108",
+        "id": "p107",
         "name": "清汤小伢粉",
         "price": 5.0,
         "desc": "消费满20元且带1.1米以下宝宝免费领取",
@@ -465,7 +412,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p109",
+        "id": "p108",
         "name": "原汤粉/面",
         "price": 8.0,
         "desc": "原汤清鲜，粉面爽滑",
@@ -583,6 +530,14 @@ const MENU = [
     "items": [
       {
         "id": "p301",
+        "name": "绿豆汤",
+        "price": 5.0,
+        "desc": "清凉解暑，甜度适中",
+        "tags": [],
+        "img": "https://s.koubei.com/zZRmsCsFy3MA3DZSG7RF6d3SptxcY4Gx.jpg"
+      },
+      {
+        "id": "p302",
         "name": "芒果珍珠冰豆花",
         "price": 8.0,
         "desc": "豆花嫩滑、芒果香甜、珍珠Q弹，果香与焦糖交织，层次丰富。",
@@ -590,7 +545,7 @@ const MENU = [
         "img": "https://s.koubei.com/f6zQxYXCKjei7ep8awaWm8CDhzXNdMw4.jpg"
       },
       {
-        "id": "p302",
+        "id": "p303",
         "name": "木薯糖水",
         "price": 6.0,
         "desc": "木薯软糯，糖水温润",
@@ -598,7 +553,7 @@ const MENU = [
         "img": "https://s.koubei.com/EfXPS2mm8EaMnARbSpXnjC2ExFwzYaM5.jpg"
       },
       {
-        "id": "p303",
+        "id": "p304",
         "name": "桂花蜜豆花",
         "price": 6.0,
         "desc": "豆花滑嫩，桂花蜜清甜",
@@ -606,7 +561,7 @@ const MENU = [
         "img": "https://s.koubei.com/SH7NEyhzH6W4w3XXD6RZnHSjm7z7HiBi.jpg"
       },
       {
-        "id": "p304",
+        "id": "p305",
         "name": "桂花米酒汤圆",
         "price": 6.0,
         "desc": "老味道桂花米酒汤圆，酒酿鲜醇，圆子软糯，桂香淡淡的，甜而不齁",
