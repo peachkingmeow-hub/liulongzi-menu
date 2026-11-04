@@ -372,6 +372,16 @@ const COMBO_DEFAULT_PACKING = [
     notIn: ['不要主食'],            // 选中值不在此列表中时命中本规则
     pack: '【打包】干湿分离打包盒',  // ¥2
   },
+  {
+    // 2026-11-04 新品专区新增的 3 道炒菜：与「鲜货现炒码子」同规则
+    // 用 items 限定范围，避免影响同分类的红烧蹄膀 / 白萝卜炖牛肋条（它们收银系统没配干湿分离盒）
+    catName: '新品专区',
+    items: ['青椒煎茄子', '农家一碗香', '肉沫茄子'],
+    spec: '炒菜份量',
+    group: '主食',
+    notIn: ['不要主食'],
+    pack: '【打包】干湿分离打包盒',  // 收银系统实际选项「【打包】码子粉干湿分离打包盒」¥2.5
+  },
 ];
 
 // 统一取默认餐盒名（组合级 > 商品级 > 规格级 > 分类级）
@@ -381,6 +391,8 @@ function getDefaultPacking(item, catId, specName, catName, selections) {
   for (const r of COMBO_DEFAULT_PACKING) {
     if (!catName || !catName.includes(r.catName)) continue;
     if (!specName || !specName.includes(r.spec)) continue;
+    // 可选：限定具体商品（商品名包含匹配），不填则整个分类生效
+    if (r.items && !r.items.some(k => item.name && item.name.includes(k))) continue;
     let sel = null;
     if (selections) {
       for (const k of Object.keys(selections)) {
