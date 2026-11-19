@@ -731,88 +731,10 @@ const MENU = [
   },
   {
     "id": "cat5",
-    "name": "广式鲜粥",
-    "items": [
-      {
-        "id": "p501",
-        "name": "广式鲜粥系列-单人份",
-        "price": 12.0,
-        "desc": "广式鲜粥以大米慢熬至绵滑，可选择搭配各种食材，鲜香温润、养胃易消化。",
-        "tags": [
-          "咸鲜"
-        ],
-        "img": "https://s.koubei.com/TzsHBtMskyY2tRnwmZwjjESjMyZZjCRA.jpg",
-        "specs": [
-          {
-            "name": "皮蛋瘦肉粥",
-            "price": 12.0
-          },
-          {
-            "name": "瘦肉粥",
-            "price": 12.0
-          },
-          {
-            "name": "财鱼粥",
-            "price": 16.0
-          },
-          {
-            "name": "鳝鱼粥",
-            "price": 24.0
-          },
-          {
-            "name": "财鱼鳝鱼粥",
-            "price": 24.0
-          },
-          {
-            "name": "牛肉粥",
-            "price": 18.0
-          }
-        ]
-      },
-      {
-        "id": "p502",
-        "name": "广式鲜粥系列-2到3人份",
-        "price": 24.0,
-        "desc": "广式鲜粥以大米慢熬至绵滑，可选择搭配各种食材，鲜香温润、养胃易消化。",
-        "tags": [
-          "咸鲜"
-        ],
-        "img": "https://s.koubei.com/TzsHBtMskyY2tRnwmZwjjESjMyZZjCRA.jpg",
-        "specs": [
-          {
-            "name": "皮蛋瘦肉粥",
-            "price": 24.0
-          },
-          {
-            "name": "瘦肉粥",
-            "price": 24.0
-          },
-          {
-            "name": "财鱼粥",
-            "price": 32.0
-          },
-          {
-            "name": "鳝鱼粥",
-            "price": 48.0
-          },
-          {
-            "name": "财鱼鳝鱼粥",
-            "price": 48.0
-          },
-          {
-            "name": "牛肉粥",
-            "price": 36.0
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "cat6",
     "name": "新品专区",
     "items": [
       {
-        "id": "p601",
+        "id": "p501",
         "name": "泥蒿炒腊肠",
         "price": 28.0,
         "desc": "泥蒿清甜，腊肠咸香，咸鲜适口",
@@ -861,7 +783,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p602",
+        "id": "p502",
         "name": "爆炒阳雀湖甘蓝（农博会金奖）",
         "price": 12.0,
         "desc": "农博会金奖阳雀湖甘蓝，脆嫩清甜",
@@ -890,7 +812,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p603",
+        "id": "p503",
         "name": "秘制蟹钳面",
         "price": 48.0,
         "desc": "蟹钳鲜香麻辣，面条劲道",
@@ -901,21 +823,70 @@ const MENU = [
         "img": "https://s.koubei.com/kS6Fjydjh3pkTJKY23CSrnFmXZsFM8BT.jpg"
       },
       {
-        "id": "p604",
+        "id": "p504",
         "name": "炒菜-秘制蟹钳",
         "price": 78.0,
         "desc": "蟹钳鲜香麻辣，层次丰富",
         "tags": [],
         "img": "https://s.koubei.com/2ShdQjwxAamTPtTZjAppaAzWDs22mHit.jpg"
+      },
+      {
+        "id": "p505",
+        "name": "腊肉炒菜苔",
+        "price": 26.0,
+        "desc": "咸香腊肉配脆嫩菜苔，猛火快炒，鲜香下饭。",
+        "tags": [],
+        "img": "https://s.koubei.com/MxjiNNYjsCkE8GJPPwxjRNeCS6MABGRh.jpg",
+        "opts": [
+          {
+            "g": "现炒码子主食",
+            "req": true,
+            "opts": [
+              "不要主食",
+              "配-米饭",
+              "配-圆粉",
+              "配-扁粉",
+              "配-宽粉",
+              "配-湖南宽粉",
+              "配-手工大宽粉",
+              "配-手工细面",
+              "配-手工扁面",
+              "配-手工宽面",
+              "配-碱面",
+              "配-豆丝",
+              "配-白米粥"
+            ]
+          },
+          {
+            "g": "温馨提示",
+            "req": true,
+            "opts": [
+              "堂食",
+              "【打包】品牌餐盒",
+              "【打包】码子粉干湿分离打包盒",
+              "其他需求请备注"
+            ]
+          }
+        ],
+        "specs": [
+          {
+            "name": "盖码份量",
+            "price": 26.0
+          },
+          {
+            "name": "炒菜份量",
+            "price": 38.0
+          }
+        ]
       }
     ]
   },
   {
-    "id": "cat7",
+    "id": "cat6",
     "name": "现炒盖码饭",
     "items": [
       {
-        "id": "p701",
+        "id": "p601",
         "name": "猪肉类-盖码饭",
         "price": 19.0,
         "desc": "",
@@ -989,7 +960,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p702",
+        "id": "p602",
         "name": "牛肉类-盖码饭",
         "price": 28.0,
         "desc": "",
@@ -1047,7 +1018,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p703",
+        "id": "p603",
         "name": "鱼鲜禽蛋类-盖码饭",
         "price": 15.0,
         "desc": "",
@@ -1107,11 +1078,11 @@ const MENU = [
     ]
   },
   {
-    "id": "cat8",
+    "id": "cat7",
     "name": "现炒码子粉",
     "items": [
       {
-        "id": "p801",
+        "id": "p701",
         "name": "牛肉类-码子粉",
         "price": 28.0,
         "desc": "",
@@ -1177,7 +1148,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p802",
+        "id": "p702",
         "name": "鱼鲜禽蛋类-码子粉",
         "price": 15.0,
         "desc": "",
@@ -1243,7 +1214,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p803",
+        "id": "p703",
         "name": "猪肉类-码子粉",
         "price": 19.0,
         "desc": "",
@@ -1327,11 +1298,11 @@ const MENU = [
     ]
   },
   {
-    "id": "cat9",
+    "id": "cat8",
     "name": "家常炒菜",
     "items": [
       {
-        "id": "p901",
+        "id": "p801",
         "name": "时蔬类-炒菜份量",
         "price": 16.0,
         "desc": "",
@@ -1379,7 +1350,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p902",
+        "id": "p802",
         "name": "鱼鲜禽蛋类-炒菜",
         "price": 22.0,
         "desc": "",
@@ -1435,7 +1406,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p903",
+        "id": "p803",
         "name": "牛肉类-炒菜",
         "price": 38.0,
         "desc": "",
@@ -1491,7 +1462,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p904",
+        "id": "p804",
         "name": "猪肉类-炒菜",
         "price": 28.0,
         "desc": "",
@@ -1563,7 +1534,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p905",
+        "id": "p805",
         "name": "时蔬类-盖码份量",
         "price": 9.0,
         "desc": "",
@@ -1613,11 +1584,11 @@ const MENU = [
     ]
   },
   {
-    "id": "cat10",
+    "id": "cat9",
     "name": "鲜货炭火烧烤",
     "items": [
       {
-        "id": "p1001",
+        "id": "p901",
         "name": "碳烤精品羊肋条",
         "price": 8.0,
         "desc": "精选羊排，肉香十足，焦嫩多汁。",
@@ -1645,8 +1616,8 @@ const MENU = [
         ]
       },
       {
-        "id": "p1002",
-        "name": "原味羊肉串",
+        "id": "p902",
+        "name": "秘制羊肉串",
         "price": 5.0,
         "desc": "羊肉鲜嫩，炭烤香气浓郁，默认微辣",
         "tags": [],
@@ -1673,7 +1644,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1003",
+        "id": "p903",
         "name": "原味猪肉串",
         "price": 3.0,
         "desc": "鲜肉现穿，清淡原味，肉汁丰富。",
@@ -1701,9 +1672,9 @@ const MENU = [
         ]
       },
       {
-        "id": "p1004",
-        "name": "牛肋条",
-        "price": 6.0,
+        "id": "p904",
+        "name": "安格斯牛肋条",
+        "price": 5.0,
         "desc": "鲜牛肉肉质细嫩带微脆筋，烤后多汁，孜然肉香浓郁",
         "tags": [],
         "img": "https://s.koubei.com/YAwtR82DRnMQDTjD5zMTi8JaskTHQ42E.jpg",
@@ -1729,7 +1700,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1005",
+        "id": "p905",
         "name": "猪脆骨",
         "price": 3.0,
         "desc": "脆嫩有嚼劲，烧烤风味十足，默认微辣",
@@ -1757,7 +1728,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1006",
+        "id": "p906",
         "name": "王中王火腿肠",
         "price": 5.0,
         "desc": "外焦里嫩，经典烧烤风味，默认微辣",
@@ -1785,7 +1756,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1007",
+        "id": "p907",
         "name": "烤凤爪",
         "price": 12.0,
         "desc": "先卤后烤，软糯Q弹",
@@ -1813,7 +1784,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1008",
+        "id": "p908",
         "name": "西葫芦",
         "price": 4.0,
         "desc": "烤后清甜，软嫩多汁，清爽解腻",
@@ -1841,7 +1812,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1009",
+        "id": "p909",
         "name": "烤鸡胗",
         "price": 3.0,
         "desc": "炭火现烤鸡胗，外皮微焦内里脆弹，满满粗孜然香，越嚼越上头。",
@@ -1869,7 +1840,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1010",
+        "id": "p910",
         "name": "糯筋子",
         "price": 3.0,
         "desc": "猪肉鲜香嫩口，现点现烤，默认微辣",
@@ -1897,7 +1868,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1011",
+        "id": "p911",
         "name": "香蕉吐司",
         "price": 8.0,
         "desc": "外酥内软，老少皆宜，微甜",
@@ -1919,11 +1890,11 @@ const MENU = [
     ]
   },
   {
-    "id": "cat11",
+    "id": "cat10",
     "name": "手工鲜制饮品",
     "items": [
       {
-        "id": "p1101",
+        "id": "p1001",
         "name": "红枣姜汁汤圆",
         "price": 6.0,
         "desc": "暖姜微辛，红糖温润，一口暖到心底。",
@@ -1931,7 +1902,7 @@ const MENU = [
         "img": "https://s.koubei.com/BzGd7y7wbRZ2HsR2zydKTGnMEfENn8Bc.jpg"
       },
       {
-        "id": "p1102",
+        "id": "p1002",
         "name": "绿豆汤",
         "price": 5.0,
         "desc": "清凉解暑，甜度适中",
@@ -1939,7 +1910,7 @@ const MENU = [
         "img": "https://s.koubei.com/pHFiEzctsS5JkhH4mYfQQbdjwnp6d3nH.jpg"
       },
       {
-        "id": "p1103",
+        "id": "p1003",
         "name": "芒果珍珠豆花",
         "price": 8.0,
         "desc": "豆花嫩滑、芒果香甜、珍珠Q弹，果香与焦糖交织，层次丰富。",
@@ -1947,7 +1918,7 @@ const MENU = [
         "img": "https://s.koubei.com/JRTWPBMi2iFASb5kxA7SDtD45nWyMQeM.jpg"
       },
       {
-        "id": "p1104",
+        "id": "p1004",
         "name": "木薯糖水",
         "price": 6.0,
         "desc": "木薯软糯，糖水温润",
@@ -1955,7 +1926,7 @@ const MENU = [
         "img": "https://s.koubei.com/GQ4N2PZpdRdQYt4DBGPD2B2mNws3a3eh.jpg"
       },
       {
-        "id": "p1105",
+        "id": "p1005",
         "name": "桂花蜜豆花",
         "price": 6.0,
         "desc": "豆花滑嫩，桂花蜜清甜",
@@ -1963,7 +1934,7 @@ const MENU = [
         "img": "https://s.koubei.com/5mZAe7bxNmWkzNp8FCp27JM432HTfw4y.jpg"
       },
       {
-        "id": "p1106",
+        "id": "p1006",
         "name": "桂花米酒汤圆",
         "price": 6.0,
         "desc": "酒酿鲜醇，圆子软糯，桂香淡淡的，甜而不齁。",
@@ -1971,7 +1942,7 @@ const MENU = [
         "img": "https://s.koubei.com/ErBKwBztmEtnFa4dDxBjtCfKh55K5zKC.jpg"
       },
       {
-        "id": "p1107",
+        "id": "p1007",
         "name": "桂圆莲子百合汤",
         "price": 12.0,
         "desc": "桂圆清甜、莲子粉糯、百合软润，慢炖成清亮甜汤，温润顺口。",
@@ -1981,11 +1952,11 @@ const MENU = [
     ]
   },
   {
-    "id": "cat12",
+    "id": "cat11",
     "name": "湖南特色炖锅",
     "items": [
       {
-        "id": "p1201",
+        "id": "p1101",
         "name": "特色牛杂炖粉",
         "price": 68.0,
         "desc": "新鲜牛肉、牛肚、牛筋、牛肠、牛黄喉配秘制锅底，细火慢炖，辣滚香鲜，汤醇味厚；汤汁通过高温融入米粉，入口软烂适中，咸淡适宜。",
@@ -2029,7 +2000,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1202",
+        "id": "p1102",
         "name": "光头粉（只能搭配炖锅下单）",
         "price": 5.0,
         "desc": "",
@@ -2049,7 +2020,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1203",
+        "id": "p1103",
         "name": "时蔬拼盘（配炖锅下单）",
         "price": 18.0,
         "desc": "",
@@ -2059,11 +2030,11 @@ const MENU = [
     ]
   },
   {
-    "id": "cat13",
+    "id": "cat12",
     "name": "时令鲜汤",
     "items": [
       {
-        "id": "p1301",
+        "id": "p1201",
         "name": "财鱼皮蛋豆腐汤",
         "price": 28.0,
         "desc": "财鱼鲜嫩，皮蛋提香，汤清味鲜",
@@ -2084,7 +2055,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1302",
+        "id": "p1202",
         "name": "番茄蛋汤",
         "price": 18.0,
         "desc": "酸甜开胃，经典家常汤品",
@@ -2106,7 +2077,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1303",
+        "id": "p1203",
         "name": "番茄肉片蛋汤",
         "price": 24.0,
         "desc": "番茄酸甜，肉片蛋花鲜嫩",
@@ -2128,7 +2099,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1304",
+        "id": "p1204",
         "name": "排骨藕汤/单人份",
         "price": 12.0,
         "desc": "排骨软烂，莲藕软糯，汤鲜味浓",
@@ -2150,7 +2121,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1305",
+        "id": "p1205",
         "name": "标准份-排骨藕汤",
         "price": 22.0,
         "desc": "适合1~2人分享，汤鲜味浓，滋补暖身",
@@ -2190,7 +2161,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1306",
+        "id": "p1206",
         "name": "丝瓜汤系列",
         "price": 18.0,
         "desc": "丝瓜清甜软嫩，牛肉滑嫩鲜香，汤清味鲜，清爽不腻。",
@@ -2229,7 +2200,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1307",
+        "id": "p1207",
         "name": "平菇肉片汤",
         "price": 3.0,
         "desc": "平菇鲜嫩、肉片滑嫩，汤清味鲜，暖胃爽口。",
@@ -2252,11 +2223,11 @@ const MENU = [
     ]
   },
   {
-    "id": "cat14",
+    "id": "cat13",
     "name": "卤菜凉菜",
     "items": [
       {
-        "id": "p1401",
+        "id": "p1301",
         "name": "凉拌卤牛肉",
         "price": 24.0,
         "desc": "卤牛肉醇香，凉拌鲜辣爽口",
@@ -2275,7 +2246,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1402",
+        "id": "p1302",
         "name": "凉拌卤顺风",
         "price": 18.0,
         "desc": "卤猪耳脆嫩，凉拌香辣爽口",
@@ -2294,7 +2265,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1403",
+        "id": "p1303",
         "name": "皮蛋拌豆腐",
         "price": 12.0,
         "desc": "豆腐滑嫩，皮蛋鲜香开胃",
@@ -2313,7 +2284,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1404",
+        "id": "p1304",
         "name": "凉拌黄瓜",
         "price": 8.0,
         "desc": "黄瓜爽脆，蒜香酸辣开胃",
@@ -2332,7 +2303,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1405",
+        "id": "p1305",
         "name": "麻辣蛤蜊",
         "price": 12.0,
         "desc": "蛤蜊鲜嫩，鲜甜入味",
@@ -2351,7 +2322,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1406",
+        "id": "p1306",
         "name": "凉拌卤藕",
         "price": 12.0,
         "desc": "卤藕粉糯脆爽，凉拌鲜香",
@@ -2370,7 +2341,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1407",
+        "id": "p1307",
         "name": "凉拌卤拼盘",
         "price": 28.0,
         "desc": "多款卤味拼盘，咸香丰富",
@@ -2391,11 +2362,11 @@ const MENU = [
     ]
   },
   {
-    "id": "cat15",
+    "id": "cat14",
     "name": "炒粉炒面炒饭炒豆丝",
     "items": [
       {
-        "id": "p1501",
+        "id": "p1401",
         "name": "炒粉面饭类",
         "price": 18.0,
         "desc": "",
@@ -2466,11 +2437,11 @@ const MENU = [
     ]
   },
   {
-    "id": "cat16",
+    "id": "cat15",
     "name": "主食",
     "items": [
       {
-        "id": "p1601",
+        "id": "p1501",
         "name": "五常大米饭",
         "price": 3.0,
         "desc": "五常大米蒸制，米香软糯",
@@ -2480,11 +2451,11 @@ const MENU = [
     ]
   },
   {
-    "id": "cat17",
+    "id": "cat16",
     "name": "酒水饮料",
     "items": [
       {
-        "id": "p1701",
+        "id": "p1601",
         "name": "百岁山",
         "price": 3.0,
         "desc": "",
@@ -2502,7 +2473,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1702",
+        "id": "p1602",
         "name": "百事可乐",
         "price": 3.0,
         "desc": "",
@@ -2520,7 +2491,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1703",
+        "id": "p1603",
         "name": "雪碧",
         "price": 3.0,
         "desc": "",
@@ -2538,7 +2509,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1704",
+        "id": "p1604",
         "name": "芬达",
         "price": 3.0,
         "desc": "",
@@ -2556,7 +2527,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1705",
+        "id": "p1605",
         "name": "维他奶",
         "price": 4.0,
         "desc": "",
@@ -2574,7 +2545,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1706",
+        "id": "p1606",
         "name": "娃哈哈（小）",
         "price": 3.0,
         "desc": "",
@@ -2592,7 +2563,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1707",
+        "id": "p1607",
         "name": "娃哈哈（大）",
         "price": 7.0,
         "desc": "",
@@ -2610,7 +2581,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1708",
+        "id": "p1608",
         "name": "椰树椰汁（245ml）",
         "price": 6.0,
         "desc": "",
@@ -2628,7 +2599,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1709",
+        "id": "p1609",
         "name": "（橙诺）大窑",
         "price": 6.0,
         "desc": "",
@@ -2646,7 +2617,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1710",
+        "id": "p1610",
         "name": "（荔爱）大窑",
         "price": 6.0,
         "desc": "",
@@ -2664,7 +2635,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1711",
+        "id": "p1611",
         "name": "（嘉宾）大窑",
         "price": 6.0,
         "desc": "",
@@ -2682,7 +2653,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1712",
+        "id": "p1612",
         "name": "大可乐",
         "price": 12.0,
         "desc": "",
@@ -2700,7 +2671,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1713",
+        "id": "p1613",
         "name": "大雪碧",
         "price": 12.0,
         "desc": "",
@@ -2718,7 +2689,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1714",
+        "id": "p1614",
         "name": "大椰汁",
         "price": 25.0,
         "desc": "",
@@ -2736,7 +2707,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1715",
+        "id": "p1615",
         "name": "瓶装-雪花勇闯天涯",
         "price": 7.0,
         "desc": "",
@@ -2754,7 +2725,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1716",
+        "id": "p1616",
         "name": "草本毛铺",
         "price": 20.0,
         "desc": "",
@@ -2772,7 +2743,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1717",
+        "id": "p1617",
         "name": "瓶装-雪花纯生",
         "price": 10.0,
         "desc": "",
@@ -2790,7 +2761,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1718",
+        "id": "p1618",
         "name": "小劲酒",
         "price": 18.0,
         "desc": "",
@@ -2808,7 +2779,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1719",
+        "id": "p1619",
         "name": "燕京U8啤酒",
         "price": 8.0,
         "desc": "",
@@ -2826,7 +2797,7 @@ const MENU = [
         ]
       },
       {
-        "id": "p1720",
+        "id": "p1620",
         "name": "百威纯生啤酒",
         "price": 10.0,
         "desc": "",
